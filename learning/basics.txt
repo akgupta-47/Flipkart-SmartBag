@@ -1,0 +1,103 @@
+app.use()
+here use method adds the function added to its parenthesis to the middlware stack
+the application “listens” for requests that match the specified route(s) and method(s), and when it detects a match, it calls the specified callback function.
+
+morgan just makes loggins middleware info to console easier
+get route code time -- format
+
+// this will run after all the routes defined by us for this applications are checked and none is matched
+// therefore it is placed at end of app.js
+app.all() works for all the methods, * means whatever the url is
+req.originalUrl gives url requested by user
+---------------------------------code-------------------------
+app.all('*', (req,res) => {
+    res.status(404).json({
+        status: 'fail',
+        message: `Can't find ${req.originalUrl} on server`
+    });
+});
+------------------------------------------------------------------
+
+there are 2 types of errors, 
+operational error: errors that don't occur due to programmers end or buggy code, but because of cliend, when he access wrong route or, server failed to connect
+programing errors: caused due to problems in code, like reading from undefined variable, passing number where object is expected or using await without async etc.
+
+generally we only pass error objects into next() function
+-----------------------------------code-------------------------------------------------
+// error handling express callback functions always take error/err as its first argument
+app.use((err,req,res,next) => {
+    // this line checks if status code is defined
+    // the status code will either be defined for the error or it will 500 that means internal server error
+    err.statusCode = err.statusCode || 500;
+    // this line checks if status is defined
+    err.status = err.status || 'error';
+    res.status(err.statusCode).json({
+        status: err.status,
+        message: err.message
+    });
+});
+-----------------------------------------------------------------------------------------
+statusCodes starting from 4 are client error responses
+
+///////// catch async code ///////////////////
+// a function is sent as argument in catchAsync
+module.exports = (fn) => {
+  // instead of just calling fn we are returning a funtion
+  // because when we wrap a function with catchAsync ,we were expecting to run the main function of route call
+  // mind it in body of controller function add req, res, next
+  return (req, res, next) => {
+    // in catch the next code is actually err => next(err)
+    // next is forwarding the error to our global error handling middleware
+    fn(req, res, next).catch(next);
+  };
+};
+////////////////////////////////
+exports.createTour = catchAsync((req,res,next) => {})
+catchAsync function can also be used in routes file instead of controllers
+but there u have to remember which function was async and whih was not
+.get(catchAsync(tourController.getTour))
+
+in controller file
+in case a mongo id is invalid from string
+if(!document){
+    return next(new AppError('no document with that id',404))
+}
+
+castError is invalid mongoId used in params
+
+duplicate fields provide this error
+and we use object.keys(err.keyValue)[0] to take the first value in that array of keys
+"error": {
+    "driver": true,
+    "name": "MongoError",
+    "index": 0,
+    "code": 11000,
+    "keyPattern": {
+        "name": 1
+    },
+    "keyValue": {
+        "name": "The Forest Hiker"
+    },
+    "statusCode": 500,
+    "status": "error"
+},
+
+// errors coming in validation of mongoose data like a string too short, or wrong format of data in req.body
+
+there are 4-5 functions that can be applied with schema
+there are 2 types schema.statics. that apllies on modle /all documents like finding average of any property from all documents
+other is instance method, schema.methods. this applies only on a particular document, like adding first and last name, or comparing passwords
+virtuals function : they are great when u want to create a property from existing properties while displaying the documents but not persisting it in the database
+alias : we can define a alias for any property in schema
+we also have querry helpers
+
+we can set our own headers in postman, and then check it using req.headers property
+
+jwt.verify() is a sync function if there is no callback
+therefore we have to often promisfy it to return a asyn version of that function
+promisify(jwt.verify())(token,secret)
+but to use promisify we need to take it from util module of nodejs
+const {promisify} = require('util')
+
+we cannot send arguments into middleware function
+so we create a wrapper function to the middleware function
