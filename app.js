@@ -5,7 +5,7 @@ const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const cookieParser = require('cookie-parser');
-const hpp = require('hpp');
+// const hpp = require('hpp');
 
 const userRouter = require('./routes/userRoutes');
 
@@ -52,25 +52,26 @@ app.use(mongoSanitize());
 app.use(xss());
 
 // prevent parameter pollution like from "&sort=duration&sort = price"
-app.use(
-  hpp({
-    whitelist: [
-      'duration',
-      'ratingsAverage',
-      'ratingsQuantity',
-      'maxGroupSize',
-      'difficulty',
-      'price',
-    ],
-  })
-);
+// app.use(
+//   hpp({
+//     whitelist: [
+//       'duration',
+//       'ratingsAverage',
+//       'ratingsQuantity',
+//       'maxGroupSize',
+//       'difficulty',
+//       'price',
+//     ],
+//   })
+// );
 
 if (process.env.NODE_ENV === 'DEVELOPMENT') {
   app.use(morgan('dev'));
 }
 
 app.use('/', basicRouter);
-app.use('/appname/users', userRouter);
+app.use('/flipkart-grocery/users', userRouter);
+app.use('/flipkart-grocery/product', require('./routes/productRoutes'));
 
 // this will run after all the routes defined by us for this applications are checked and none is matched
 // therefore it is placed at end of app.js

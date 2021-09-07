@@ -47,6 +47,23 @@ const userSchema = new mongoose.Schema({
       message: 'password must be same',
     },
   },
+  phone: {
+    type: Number,
+    required: true,
+    maxlength: [10, 'The maximum length of phone number is 10 characters'],
+    minlength: [10, 'The minimum length of phone number is 10 characters'],
+  },
+  prods: [
+    {
+      type: mongoose.Schema.ObjectId,
+      ref: 'Product',
+    },
+  ],
+  sex: {
+    type: String,
+    lowercase: true,
+    enum: ['male', 'female', 'other'],
+  },
   passwordChangedAt: Date,
   passwordResetToken: String,
   passwordResetExpires: Date,
