@@ -72,6 +72,7 @@ if (process.env.NODE_ENV === 'DEVELOPMENT') {
 app.use('/', basicRouter);
 app.use('/flipkart-grocery/users', userRouter);
 app.use('/flipkart-grocery/product', require('./routes/productRoutes'));
+app.use('/flipkart-grocery/cart', require('./routes/cartRoutes'));
 
 // this will run after all the routes defined by us for this applications are checked and none is matched
 // therefore it is placed at end of app.js

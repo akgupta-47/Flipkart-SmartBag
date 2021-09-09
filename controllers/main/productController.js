@@ -3,7 +3,8 @@ const { CloudinaryStorage } = require('multer-storage-cloudinary');
 const Product = require('../../models/productModel');
 const catchAsync = require('../../utils/catchAsync');
 const AppError = require('../../utils/appError');
-// const factory = require('../handlerFactory');
+const factory = require('../handlerFactory');
+
 const {
   cloudinary,
   deleteProductImage,
@@ -35,21 +36,36 @@ exports.uploadProd = multer({
   fileFilter: multerFilter,
 }).single('product');
 
-exports.getAllProds = catchAsync(async (req, res, next) => {
-  const searchString = new RegExp(req.body.search);
+exports.getAllProdsList = catchAsync(async (req, res, next) => {
+  const searchString = new RegExp(req.body.search.trim());
   const products = await Product.find({ name: searchString });
 
   if (!products) {
     return next(new AppError('No such products', 404));
   }
 
+  // eslint-disable-next-line array-callback-return
+  const prods = products.map((el) => {
+    const obj = {
+      name: el.name,
+      img: el.img,
+      price: el.price,
+      rating: el.rating,
+      quant: el.quant,
+      _id: el._id,
+    };
+    return obj;
+  });
+
   res.status(200).json({
     status: 'success',
     data: {
-      data: products,
+      data: prods,
     },
   });
 });
+
+exports.getProduct = factory.getOne(Product);
 
 exports.newProduct = catchAsync(async (req, res, next) => {
   // console.log(req.body);
