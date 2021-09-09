@@ -7,6 +7,10 @@ const cartSchema = mongoose.Schema(
       required: true,
       default: 0,
     },
+    user: {
+      type: mongoose.Schema.ObjectId,
+      ref: 'User',
+    },
     amnt: {
       type: Number,
       required: true,

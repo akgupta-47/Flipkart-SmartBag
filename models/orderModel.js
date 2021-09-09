@@ -5,6 +5,10 @@ const orderSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  user: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'User',
+  },
   total: {
     type: Number,
     required: true,
@@ -22,11 +26,25 @@ const orderSchema = mongoose.Schema({
   deliver: {
     type: Number,
     required: true,
+    default: 3,
+  },
+  payMode: {
+    type: String,
+    required: true,
+    default: 'cod',
+  },
+  status: {
+    type: String,
+    emun: ['pending', 'delivered', 'cancelled'],
+    default: 'pending',
   },
   prods: [
     {
-      type: mongoose.Schema.ObjectId,
-      ref: 'Product',
+      quant: Number,
+      prod: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'Product',
+      },
     },
   ],
 });

@@ -21,7 +21,8 @@ const userSchema = new mongoose.Schema({
   },
   photo: {
     type: String,
-    default: 'default.jpg',
+    default:
+      'https://res.cloudinary.com/flyingbing/image/upload/v1631215449/defaultImage_mmxazq.png',
   },
   password: {
     type: String,
@@ -53,12 +54,6 @@ const userSchema = new mongoose.Schema({
     maxlength: [10, 'The maximum length of phone number is 10 characters'],
     minlength: [10, 'The minimum length of phone number is 10 characters'],
   },
-  prods: [
-    {
-      type: mongoose.Schema.ObjectId,
-      ref: 'Product',
-    },
-  ],
   sex: {
     type: String,
     lowercase: true,

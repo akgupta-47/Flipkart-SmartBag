@@ -4,7 +4,7 @@ const AppError = require('../../utils/appError');
 const Cart = require('../../models/cartModel');
 
 exports.viewCart = catchAsync(async (req, res, next) => {
-  const cart = await Cart.find();
+  const cart = await Cart.find({ user: req.user._id });
 
   if (!cart) {
     return next(new AppError('No items in cart', 404));
@@ -19,7 +19,7 @@ exports.viewCart = catchAsync(async (req, res, next) => {
 });
 
 exports.addToCart = catchAsync(async (req, res, next) => {
-  let cart = await Cart.find();
+  let cart = await Cart.find({ user: req.user._id });
 
   if (cart.length === 0) {
     // if no product in the cart then create new cart
@@ -73,7 +73,7 @@ exports.addToCart = catchAsync(async (req, res, next) => {
 exports.removeFromCart = catchAsync(async (req, res, next) => {
   // populate based prod in prods arrays abject
   // eslint-disable-next-line prefer-const
-  let cart = await Cart.find().populate({
+  let cart = await Cart.find({ user: req.user._id }).populate({
     path: 'prods',
     populate: { path: 'prod' },
   });
@@ -105,6 +105,15 @@ exports.removeFromCart = catchAsync(async (req, res, next) => {
 
   // save the document
   await cart[0].save({ validateBeforeSave: false });
+
+  res.status(204).json({
+    status: 'success',
+    data: null,
+  });
+});
+
+exports.emptyCart = catchAsync(async (req, res, next) => {
+  await Cart.deleteOne({ user: req.user._id });
 
   res.status(204).json({
     status: 'success',

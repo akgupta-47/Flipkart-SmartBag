@@ -4,7 +4,7 @@ const cartController = require('../controllers/main/cartController');
 
 const router = express.Router();
 
-router.route('/').get(cartController.viewCart);
+router.route('/').get(cartController.viewCart).delete(cartController.emptyCart);
 
 router
   .route('/:id')
