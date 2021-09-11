@@ -1,14 +1,17 @@
 const express = require('express');
-// const authController = require('../controllers/authController');
+const authController = require('../controllers/authController');
 const cartController = require('../controllers/main/cartController');
 
 const router = express.Router();
 
-router.route('/').get(cartController.viewCart).delete(cartController.emptyCart);
+router
+  .route('/')
+  .get(authController.protect, cartController.viewCart)
+  .delete(authController.protect, cartController.emptyCart);
 
 router
   .route('/:id')
-  .post(cartController.addToCart)
-  .delete(cartController.removeFromCart);
+  .post(authController.protect, cartController.addToCart)
+  .delete(authController.protect, cartController.removeFromCart);
 
 module.exports = router;

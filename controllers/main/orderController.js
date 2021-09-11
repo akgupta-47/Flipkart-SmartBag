@@ -23,7 +23,7 @@ exports.getAllOrders = catchAsync(async (req, res, next) => {
 });
 
 exports.newOrder = catchAsync(async (req, res, next) => {
-  const cart = Cart.find();
+  const cart = await Cart.find({ user: req.user._id });
 
   if (!cart) {
     return next(new AppError('cart is found empty', 404));
@@ -48,7 +48,7 @@ exports.newOrder = catchAsync(async (req, res, next) => {
 });
 
 exports.getMyOrders = catchAsync(async (req, res, next) => {
-  const orders = await Order.find({ user: req.user_id });
+  const orders = await Order.find({ user: req.user._id });
 
   if (!orders) {
     return next(new AppError('no orders found', 404));
@@ -69,9 +69,9 @@ exports.cancelMyOrder = catchAsync(async (req, res, next) => {
     return next(new AppError('no orders found', 404));
   }
 
-  order.status = 'cancelled';
+  order[0].status = 'cancelled';
 
-  await order.save({ validateBeforeSave: false });
+  await order[0].save({ validateBeforeSave: false });
 
   res.status(200).json({
     status: 'success',

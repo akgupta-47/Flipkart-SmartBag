@@ -25,6 +25,7 @@ exports.addToCart = catchAsync(async (req, res, next) => {
     // if no product in the cart then create new cart
     cart = await Cart.create({
       total: 1,
+      user: req.user._id,
       amnt: req.body.amount,
       prods: [
         {
