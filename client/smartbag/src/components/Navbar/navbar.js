@@ -1,6 +1,7 @@
 import React,{useEffect} from 'react';
 import './navbar.css';
 import 'materialize-css/dist/css/materialize.min.css';
+import Login from '../Login/Login'
 
 function Navbar(){
    
@@ -27,6 +28,7 @@ function Navbar(){
                             </div>
                         </form>
                     </li>
+                    <li><Login/></li>
                     <li><a className="dropdown-trigger" href="#" data-target="dropdown1">A link<i class="material-icons right">arrow_drop_down</i></a></li>
                     <li><a className="dropdown-trigger" href="#" data-target="dropdown1">A second link<i class="material-icons right">arrow_drop_down</i></a></li>
                     <li><a className="dropdown-trigger" href="#" data-target="dropdown1">A third link<i class="material-icons right">arrow_drop_down</i></a></li>

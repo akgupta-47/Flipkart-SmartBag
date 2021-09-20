@@ -1,0 +1,17 @@
+.left-col {
+  background-color: lightseagreen;
+  margin-top: 0px;
+}
+.modal-content {
+  padding: 0px !important;
+}
+h4 {
+  padding: 20px;
+}
+p {
+  line-height: 23px;
+  padding-left: 20px;
+}
+.row {
+  margin-bottom: 0px !important;
+}

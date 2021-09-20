@@ -8,6 +8,7 @@ function App() {
   useEffect(()=>{
     M.AutoInit();
   },[]);
+  
   return (
     <Router>
       <div className="App">
