@@ -1,3 +1,30 @@
-.brand-logo{
-    margin-left: 300px;
+.heading  {
+    margin-right:30px ;
+}
+.nav-wrapper{
+    padding: 10px;
+    display: flex;
+
+    justify-content: center;
+}
+.nav-wrapper .input-field input[type="search"] {
+    background-color: white;
+    color: black!important;
+}
+
+#search{
+    background-color: white!important;
+    color: black!important;
+}
+
+nav .input-field label.active i{
+    color: black!important;
+}
+.input-field input[type="search"] ~ .mdi-navigation-close, .input-field input[type="search"] ~ .material-icons{
+    color: black!important;
+}
+
+.nav-content{
+    display: flex;
+    justify-content: center;
 }
