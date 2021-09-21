@@ -13,7 +13,7 @@ const Login =()=>{
                             <p>Get access to your Orders, Wishlist and Recommendations</p>
                             <div className="log_img"></div>
                         </div>
-                        <div className="col right-col s7">
+                        <div className="col center right-col s7">
                             <div className="row">
                             <div class="input-field col s12">
                                 <input type="text" id="autocomplete-input" class="autocomplete label-input"/>
