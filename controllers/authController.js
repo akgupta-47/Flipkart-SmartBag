@@ -86,7 +86,7 @@ exports.signUp = catchAsync(async (req, res, next) => {
     'host'
   )}/flipkart-grocery/users/signup/${token}`;
 
-  const message = `You must complete the registration process by following the link below: \n ${URL}.`;
+  const message = `You must complete the registration process by following the link below: \n ${URL}`;
 
   await new Email(newUser, URL).sendWelcome(message);
 
@@ -96,6 +96,10 @@ exports.signUp = catchAsync(async (req, res, next) => {
   // });
 
   //createSignToken(newUser, 201, res);
+  res.status(200).json({
+    status: 'success',
+    message: 'Token sent by email',
+  });
 });
 
 exports.login = catchAsync(async (req, res, next) => {

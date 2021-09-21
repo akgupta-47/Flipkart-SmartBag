@@ -14,7 +14,6 @@ module.exports = class Email {
   newTransport() {
     if (process.env.NODE_ENV === 'production') {
       //sendgrid
-      console.log('i reached here');
 
       return nodemailer.createTransport({
         service: 'SendGrid',
@@ -43,13 +42,6 @@ module.exports = class Email {
       subject,
       text: message,
     };
-
-    // if (process.env.NODE_ENV === 'production') {
-    //   //sendgrid
-    //   console.log('i reached here');
-    //   await sgMail.send(mailOptions);
-    //   return;
-    // }
 
     await this.newTransport().sendMail(mailOptions);
   }
