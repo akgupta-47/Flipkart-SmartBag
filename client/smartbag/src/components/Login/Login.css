@@ -1,3 +1,6 @@
+.modal {
+  width: 50%;
+}
 .left-col {
   background-color: #2870f0;
   margin-top: 0px;
@@ -22,26 +25,29 @@ p {
 }
 .log_img {
   background-image: url('../../Images/login/login_img.png');
-  padding: 150px 80px;
+  padding: 150px 80px 135px 80px;
   background-position: center 85%;
   background-repeat: no-repeat;
 }
 
 .right-col {
   margin-top: 0px;
-  padding: 20px 30px 10px 30px !important;
+  padding: 20px 50px 10px 50px !important;
 }
 label {
   color: #878787 !important;
   font-size: 16px !important;
   font-weight: 400 !important;
-  padding-bottom: 10px;
+}
+input {
+  margin-bottom: 4px !important;
 }
 .input-field {
-  margin-bottom: 20px;
+  padding-top: 5px !important ;
+  margin-top: 8px !important;
 }
 .label-input {
-  padding: 5px 0px !important;
+  padding: 5px 0px 0px 0px !important;
   border-bottom: 0.5px solid #878787 !important;
 }
 .p-lower {
@@ -53,10 +59,10 @@ label {
 
 .login-btn {
   background: #fb641b;
-  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 20%);
+  box-shadow: 0 1px 1px 0 rgb(0 0 0 / 10%);
   border: none;
   color: #fff;
-  padding: 0px 190px 40px 190px !important;
+  padding: 0px 110px 40px 110px !important;
   margin: 0px !important;
   font-size: 16px;
 }
@@ -71,13 +77,12 @@ label {
 }
 .otp-btn {
   background: white;
-  box-shadow: 0 1px 1px 0 rgb(0 0 0 / 20%);
+  box-shadow: 0 1px 1px 0 rgb(0 0 0 / 10%);
   border: none;
   color: #2870f0;
-  padding: 0px 160px 40px 160px !important;
+  padding: 0px 75px 40px 75px !important;
   margin: 0px !important;
   font-size: 16px;
-  font-weight: 600 !important;
 }
 .otp-btn:hover {
   background: white;
@@ -87,4 +92,27 @@ label {
   font-size: 14px !important;
   font-weight: 600 !important;
   text-align: center;
+}
+a.alower {
+  display: inline !important;
+  padding: 0px !important;
+  font-size: 12px;
+}
+a.alower:hover {
+  background-color: inherit;
+}
+.otp-btn:hover {
+  box-shadow: 0 1px 1px 1px rgb(0 0 0 / 10%);
+}
+.login-btn:hover {
+  box-shadow: 0 1px 1px 1px rgb(0 0 0 / 30%);
+}
+
+a.alower3:hover {
+  background-color: inherit;
+}
+
+.btn {
+  font-family: Roboto, Arial, sans-serif;
+  text-transform: none;
 }
