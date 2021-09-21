@@ -4,7 +4,8 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/userModel');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
-const sendEmail = require('../utils/email');
+// const sendEmail = require('../utils/email');
+const Email = require('../utils/email');
 
 const signToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -83,30 +84,11 @@ exports.signUp = catchAsync(async (req, res, next) => {
   //Send email to client
   const URL = `${req.protocol}://${req.get(
     'host'
-  )}/appname/users/signup/${token}`;
+  )}/flipkart-grocery/users/signup/${token}`;
 
   const message = `You must complete the registration process by following the link below: \n ${URL}.`;
 
-  try {
-    sendEmail({
-      email: newUser.email,
-      subject: 'Follow the instructions to activate your account.',
-      message,
-    });
-
-    res.status(200).json({
-      status: 'success',
-      message: 'Token sent by email',
-    });
-  } catch (err) {
-    // console.log(err);
-    return next(
-      new AppError(
-        'There was an error sending an email, try sending later',
-        500
-      )
-    );
-  }
+  await new Email(newUser, URL).sendWelcome(message);
 
   //jwt.sign(payload, secretOrPrivateKey, [options, callback])
   // const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, {
@@ -226,14 +208,10 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
   try {
     const resetURL = `${req.protocol}://${req.get(
       'host'
-    )}/appname/users/reset-password/${resetToken}`;
+    )}/flipkart-grocery/users/reset-password/${resetToken}`;
 
     const message = `Forgot your password, Don't worry make a request on ${resetURL} to reset your password`;
-    await sendEmail({
-      email: user.email,
-      subject: 'Your password reset token(expiring in 10 mins)',
-      message,
-    });
+    await new Email(user, resetURL).sendPasswordReset(message);
 
     res.status(200).json({
       status: 'success',

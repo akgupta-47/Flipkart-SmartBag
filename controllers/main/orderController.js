@@ -3,6 +3,7 @@ const catchAsync = require('../../utils/catchAsync');
 const AppError = require('../../utils/appError');
 const Cart = require('../../models/cartModel');
 const Order = require('../../models/orderModel');
+const convertToCsv = require('../../utils/objectToCsv');
 
 // we can also implement geolocation feature by storing lats and longitudes
 // then delivery days can be calculated through that only location latlangs and centers distance
@@ -92,6 +93,35 @@ exports.getMyOrder = catchAsync(async (req, res, next) => {
     status: 'success',
     data: {
       data: order,
+    },
+  });
+});
+
+exports.getMyOrdersCsv = catchAsync(async (req, res, next) => {
+  const orders = await Order.find({ user: req.user._id });
+
+  // eslint-disable-next-line one-var
+  let i, j;
+  const jsonOrders = [];
+  for (i = 0; i < orders.length; i += 1) {
+    for (j = 0; j < orders[i].prods.length; j += 1) {
+      const mukesh = {
+        user: req.user._id,
+        odtime: orders[i].odtime,
+        product: orders[i].prods[j].prod,
+        quantity: orders[i].prods[j].quant,
+      };
+      jsonOrders.push(mukesh);
+    }
+  }
+
+  const csv = await convertToCsv(jsonOrders);
+  console.log(csv);
+
+  res.status(200).json({
+    status: 'success',
+    data: {
+      jsonOrders,
     },
   });
 });

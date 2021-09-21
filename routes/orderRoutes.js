@@ -18,6 +18,10 @@ router
   .get(authController.protect, orderController.getMyOrders);
 
 router
+  .route('/smart-bag')
+  .get(authController.protect, orderController.getMyOrdersCsv);
+
+router
   .route('/:id')
   .delete(authController.protect, orderController.cancelMyOrder)
   .get(authController.protect, orderController.getMyOrder);

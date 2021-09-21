@@ -10,6 +10,7 @@
   "author": "Akshat Gupta",
   "license": "ISC",
   "dependencies": {
+    "@sendgrid/mail": "^7.4.6",
     "bcryptjs": "^2.4.3",
     "cloudinary": "^1.26.3",
     "cookie-parser": "^1.4.5",
@@ -19,12 +20,14 @@
     "express-rate-limit": "^5.2.6",
     "helmet": "^4.4.1",
     "hpp": "^0.2.3",
+    "json2csv": "^5.0.6",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.0",
     "morgan": "^1.10.0",
     "multer": "^1.4.3",
     "multer-storage-cloudinary": "^4.0.0",
     "nodemailer": "^6.5.0",
+    "objects-to-csv": "^1.3.6",
     "validator": "^13.5.2",
     "xss-clean": "^0.1.1"
   },
