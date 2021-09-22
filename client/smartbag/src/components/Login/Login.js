@@ -11,17 +11,22 @@ const Login = () => {
     e.preventDefault();
     console.log(credentials);
     console.log(password);
+    setCredentials('');
+    setPassword('');
   };
 
   const handleOTP = (e) => {
     e.preventDefault();
     console.log(credentials);
     console.log(password);
+    setCredentials('');
+    setPassword('');
   };
 
   const handleNewLogin = (e) => {
     e.preventDefault();
     console.log(newCredentials);
+    setNewCredentials('');
   };
 
   return (
@@ -48,7 +53,6 @@ const Login = () => {
                     onChange={(e) => {
                       setCredentials(e.target.value);
                     }}
-                    required
                   />
                   <label for="autocomplete-input">
                     Enter Email/Mobile Number
@@ -63,7 +67,6 @@ const Login = () => {
                     onChange={(e) => {
                       setPassword(e.target.value);
                     }}
-                    required
                   />
                   <label for="autocomplete-input2">Enter Password</label>
                   <p className="p-lower">
@@ -115,7 +118,6 @@ const Login = () => {
                     onChange={(e) => {
                       setNewCredentials(e.target.value);
                     }}
-                    required
                   />
                   <label for="autocomplete-input3">
                     Enter your Mobile Number
