@@ -14,7 +14,7 @@ h4 {
   font-weight: 100;
 }
 p {
-  line-height: 25px;
+  line-height: 22px;
   padding-left: 20px;
   padding-right: 20px;
   font-size: 18px;
@@ -69,6 +69,9 @@ input {
 .login-btn:hover {
   background: #fb641b;
 }
+.login-btn:focus {
+  background-color: #fb641b;
+}
 .p-lower2 {
   color: #878787;
   font-size: 14px !important;
@@ -86,6 +89,9 @@ input {
 }
 .otp-btn:hover {
   background: white;
+}
+.otp-btn:focus {
+  background-color: white;
 }
 
 .p-lower3 {
@@ -115,4 +121,57 @@ a.alower3:hover {
 .btn {
   font-family: Roboto, Arial, sans-serif;
   text-transform: none;
+}
+
+.signup_img {
+  background-image: url('../../Images/login/login_img.png');
+  padding: 150px 80px 120px 80px;
+  background-position: center 85%;
+  background-repeat: no-repeat;
+}
+
+.ps-lower {
+  color: #878787;
+  font-size: 12px;
+  font-weight: 500 !important;
+  padding-left: 0px !important;
+  text-align: left !important;
+  padding-right: 0px;
+}
+
+.right-col2 {
+  margin-top: 0px;
+  padding: 20px 40px 10px 40px !important;
+}
+
+.login-btn2 {
+  background: #fb641b;
+  box-shadow: 0 1px 1px 0 rgb(0 0 0 / 10%);
+  border: none;
+  color: #fff;
+  padding: 0px 95px 40px 95px !important;
+  margin: 0px !important;
+  font-size: 16px;
+}
+.login-btn2:hover {
+  background: #fb641b;
+}
+.login-btn2:focus {
+  background-color: #fb641b;
+}
+
+.otp-btn2 {
+  background: white;
+  box-shadow: 0 1px 1px 0 rgb(0 0 0 / 10%);
+  border: none;
+  color: #2870f0;
+  padding: 0px 50px 40px 50px !important;
+  margin: 0px !important;
+  font-size: 16px;
+}
+.otp-btn2:hover {
+  background: white;
+}
+.otp-btn2:focus {
+  background-color: white;
 }
