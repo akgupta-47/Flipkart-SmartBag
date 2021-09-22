@@ -6,6 +6,8 @@ const Login = () => {
   const [credentials, setCredentials] = useState('');
   const [password, setPassword] = useState('');
   const [newCredentials, setNewCredentials] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [Mobile, setMobile] = useState('');
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -26,7 +28,11 @@ const Login = () => {
   const handleNewLogin = (e) => {
     e.preventDefault();
     console.log(newCredentials);
+    console.log(newPassword);
+    console.log(Mobile);
     setNewCredentials('');
+    setMobile('');
+    setNewPassword('');
   };
 
   return (
@@ -103,7 +109,7 @@ const Login = () => {
         <div class="modal-content">
           <div className="row">
             <div className="col left-col s5">
-              <h4>Looks like you're new here!</h4>
+              <h4 className="h4sign">Looks like you're new here!</h4>
               <p>Sign up with your mobile number to get started</p>
               <div className="signup_img"></div>
             </div>
@@ -112,11 +118,35 @@ const Login = () => {
                 <div class="input-field col s12">
                   <input
                     type="text"
-                    id="autocomplete-input3"
+                    id="autocomplete-input4"
                     class="autocomplete label-input"
                     value={newCredentials}
                     onChange={(e) => {
                       setNewCredentials(e.target.value);
+                    }}
+                  />
+                  <label for="autocomplete-input4">Enter your email</label>
+                </div>
+                <div class="input-field col s12">
+                  <input
+                    type="password"
+                    id="autocomplete-input5"
+                    class="autocomplete label-input"
+                    value={newPassword}
+                    onChange={(e) => {
+                      setNewPassword(e.target.value);
+                    }}
+                  />
+                  <label for="autocomplete-input5">Enter your password</label>
+                </div>
+                <div class="input-field col s12">
+                  <input
+                    type="number"
+                    id="autocomplete-input3"
+                    class="autocomplete label-input"
+                    value={Mobile}
+                    onChange={(e) => {
+                      setMobile(e.target.value);
                     }}
                   />
                   <label for="autocomplete-input3">
