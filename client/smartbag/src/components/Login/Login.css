@@ -72,6 +72,7 @@ input {
 }
 .login-btn:hover {
   background: #fb641b;
+  box-shadow: 0 1px 1px 1px rgb(0 0 0 / 30%);
 }
 .login-btn:focus {
   background-color: #fb641b;
@@ -93,6 +94,7 @@ input {
 }
 .otp-btn:hover {
   background: white;
+  box-shadow: 0 1px 1px 1px rgb(0 0 0 / 10%);
 }
 .otp-btn:focus {
   background-color: white;
@@ -110,12 +112,6 @@ a.alower {
 }
 a.alower:hover {
   background-color: inherit;
-}
-.otp-btn:hover {
-  box-shadow: 0 1px 1px 1px rgb(0 0 0 / 10%);
-}
-.login-btn:hover {
-  box-shadow: 0 1px 1px 1px rgb(0 0 0 / 30%);
 }
 
 a.alower3:hover {
@@ -159,6 +155,7 @@ a.alower3:hover {
 }
 .login-btn2:hover {
   background: #fb641b;
+  box-shadow: 0 1px 1px 1px rgb(0 0 0 / 30%);
 }
 .login-btn2:focus {
   background-color: #fb641b;
@@ -175,7 +172,14 @@ a.alower3:hover {
 }
 .otp-btn2:hover {
   background: white;
+  box-shadow: 0 1px 1px 1px rgb(0 0 0 / 10%);
 }
 .otp-btn2:focus {
   background-color: white;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

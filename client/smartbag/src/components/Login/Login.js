@@ -3,36 +3,30 @@ import './Login.css';
 import 'materialize-css/dist/css/materialize.min.css';
 
 const Login = () => {
-  const [credentials, setCredentials] = useState('');
-  const [password, setPassword] = useState('');
-  const [newCredentials, setNewCredentials] = useState('');
-  const [newPassword, setNewPassword] = useState('');
-  const [Mobile, setMobile] = useState('');
+  const [credentials, setCredentials] = useState({ user: '', password: '' });
+  const [newCredentials, setNewCredentials] = useState({ email: '', password: '',mobile: '' });
 
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log(credentials);
-    console.log(password);
-    setCredentials('');
-    setPassword('');
+    console.log(credentials.user);
+    console.log(credentials.password);
+    setCredentials({ user: '', password: '' });
   };
 
   const handleOTP = (e) => {
     e.preventDefault();
-    console.log(credentials);
-    console.log(password);
-    setCredentials('');
-    setPassword('');
+    console.log(credentials.user);
+    console.log(credentials.password);
+    setCredentials({ user: '', password: '' });
   };
 
   const handleNewLogin = (e) => {
     e.preventDefault();
-    console.log(newCredentials);
-    console.log(newPassword);
-    console.log(Mobile);
-    setNewCredentials('');
-    setMobile('');
-    setNewPassword('');
+    console.log(newCredentials.email);
+    console.log(newCredentials.password);
+    console.log(newCredentials.mobile);
+    setNewCredentials({ email: '', password: '', mobile: '' });
+  
   };
 
   return (
@@ -55,9 +49,9 @@ const Login = () => {
                     type="text"
                     id="autocomplete-input"
                     class="autocomplete label-input"
-                    value={credentials}
+                    value={credentials.user}
                     onChange={(e) => {
-                      setCredentials(e.target.value);
+                      setCredentials({ ...credentials, user: e.target.value });
                     }}
                   />
                   <label for="autocomplete-input">
@@ -69,9 +63,9 @@ const Login = () => {
                     type="password"
                     id="autocomplete-input2"
                     class="autocomplete label-input"
-                    value={password}
+                    value={credentials.password}
                     onChange={(e) => {
-                      setPassword(e.target.value);
+                      setCredentials({ ...credentials, password: e.target.value });
                     }}
                   />
                   <label for="autocomplete-input2">Enter Password</label>
@@ -120,9 +114,9 @@ const Login = () => {
                     type="text"
                     id="autocomplete-input4"
                     class="autocomplete label-input"
-                    value={newCredentials}
+                    value={newCredentials.email}
                     onChange={(e) => {
-                      setNewCredentials(e.target.value);
+                      setNewCredentials({...newCredentials,email: e.target.value});
                     }}
                   />
                   <label for="autocomplete-input4">Enter your email</label>
@@ -132,9 +126,9 @@ const Login = () => {
                     type="password"
                     id="autocomplete-input5"
                     class="autocomplete label-input"
-                    value={newPassword}
+                    value={newCredentials.password}
                     onChange={(e) => {
-                      setNewPassword(e.target.value);
+                      setNewCredentials({...newCredentials,password: e.target.value});
                     }}
                   />
                   <label for="autocomplete-input5">Enter your password</label>
@@ -144,9 +138,9 @@ const Login = () => {
                     type="number"
                     id="autocomplete-input3"
                     class="autocomplete label-input"
-                    value={Mobile}
+                    value={newCredentials.mobile}
                     onChange={(e) => {
-                      setMobile(e.target.value);
+                      setNewCredentials({...newCredentials,mobile: e.target.value});
                     }}
                   />
                   <label for="autocomplete-input3">
