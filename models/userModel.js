@@ -57,6 +57,7 @@ const userSchema = new mongoose.Schema({
   sex: {
     type: String,
     lowercase: true,
+    default: 'other',
     enum: ['male', 'female', 'other'],
   },
   passwordChangedAt: Date,

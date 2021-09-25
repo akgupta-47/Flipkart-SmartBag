@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
+const cors = require('cors');
 const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
@@ -10,17 +11,20 @@ const cookieParser = require('cookie-parser');
 const userRouter = require('./routes/userRoutes');
 
 const app = express();
+
+// in cors always add the client url
+app.use(cors({ origin: [`${process.env.CLIENT_URL}`], credentials: true }));
+
 // eslint-disable-next-line import/newline-after-import
 const globalErrorHandler = require('./controllers/errorController');
 const AppError = require('./utils/appError');
-const basicRouter = require('./routes/basicRoute');
 
 // setting secure http headers
 app.use(helmet());
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
-      defaultSrc: ["'self'", 'http://127.0.0.1:3000/*'],
+      defaultSrc: ["'self'", 'http://127.0.0.1:5000/*'],
       baseUri: ["'self'"],
       fontSrc: ["'self'", 'https:', 'data:'],
       scriptSrc: ["'self'", 'https://cdnjs.cloudflare.com', 'unsafe-eval'],
@@ -51,29 +55,15 @@ app.use(mongoSanitize());
 // satitisation against xss (malicious html in querry string)
 app.use(xss());
 
-// prevent parameter pollution like from "&sort=duration&sort = price"
-// app.use(
-//   hpp({
-//     whitelist: [
-//       'duration',
-//       'ratingsAverage',
-//       'ratingsQuantity',
-//       'maxGroupSize',
-//       'difficulty',
-//       'price',
-//     ],
-//   })
-// );
-
 if (process.env.NODE_ENV === 'DEVELOPMENT') {
   app.use(morgan('dev'));
 }
 
-app.use('/', basicRouter);
-app.use('/flipkart-grocery/users', userRouter);
-app.use('/flipkart-grocery/product', require('./routes/productRoutes'));
-app.use('/flipkart-grocery/cart', require('./routes/cartRoutes'));
-app.use('/flipkart-grocery/order', require('./routes/orderRoutes'));
+// app.use('/', basicRouter);
+app.use('/api/users', userRouter);
+app.use('/api/product', require('./routes/productRoutes'));
+app.use('/api/cart', require('./routes/cartRoutes'));
+app.use('/api/order', require('./routes/orderRoutes'));
 
 // this will run after all the routes defined by us for this applications are checked and none is matched
 // therefore it is placed at end of app.js

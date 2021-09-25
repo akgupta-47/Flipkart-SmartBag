@@ -63,21 +63,15 @@ exports.confirmSignup = catchAsync(async (req, res, next) => {
 });
 
 exports.signUp = catchAsync(async (req, res, next) => {
-  // if (req.body.role !== 'user') {
-  //   return next(
-  //     new AppError('You can only be a user, so stay in your limits', 401)
-  //   );
-  // }
-
   const newUser = await User.create({
     name: req.body.name,
     email: req.body.email,
     password: req.body.password,
     passwordConfirm: req.body.passwordConfirm,
-    sex: req.body.sex,
     phone: req.body.phone,
   });
 
+  console.log('i reached here');
   const token = signToken(newUser._id);
   // console.log(token);
 
@@ -89,11 +83,6 @@ exports.signUp = catchAsync(async (req, res, next) => {
   const message = `You must complete the registration process by following the link below: \n ${URL}`;
 
   await new Email(newUser, URL).sendWelcome(message);
-
-  //jwt.sign(payload, secretOrPrivateKey, [options, callback])
-  // const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, {
-  //   expiresIn: process.env.JWT_EXPIRES_IN,
-  // });
 
   //createSignToken(newUser, 201, res);
   res.status(200).json({
@@ -144,6 +133,8 @@ exports.protect = catchAsync(async (req, res, next) => {
   ) {
     token = req.headers.authorization.split(' ')[1];
     //console.log(token);
+  } else if (req.cookie.jwt) {
+    token = req.jwt.cookie;
   }
   if (!token) {
     return next(

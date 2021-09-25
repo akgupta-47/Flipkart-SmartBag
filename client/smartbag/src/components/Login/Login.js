@@ -8,26 +8,35 @@ const baseUrl = 'http://localhost:5000/api/users';
 const Login = () => {
   const [credentials, setCredentials] = useState({ user: '', password: '' });
   const [isLogin, setIsLogin] = useState(true);
+  // const [isSignUp, setIsSignUp] = useState(false);
   const [newCredentials, setNewCredentials] = useState({
+    name: '',
     email: '',
     password: '',
-    mobile: '',
+    confirmPassword: '',
+    mobile: 0,
   });
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    alert(credentials.user);
-    alert(credentials.password);
-    const ax = axios({
-      method: 'POST',
-      url: `${baseUrl}/login`,
-      data: {
-        email: credentials.user,
-        password: credentials.password,
-      },
-    });
-    console.log(ax);
+    // alert(credentials.user);
+    // alert(credentials.password);
+    try {
+      const ax = await axios({
+        method: 'POST',
+        url: `${baseUrl}/login`,
+        data: {
+          email: credentials.user,
+          password: credentials.password,
+        },
+        withCredentials: true,
+      });
+      console.log(ax);
+    } catch (err) {
+      console.log(err);
+    }
     setCredentials({ user: '', password: '' });
+    setIsLogin(false);
   };
 
   const handleOTP = (e) => {
@@ -37,12 +46,32 @@ const Login = () => {
     setCredentials({ user: '', password: '' });
   };
 
-  const handleNewLogin = (e) => {
+  const handleNewLogin = async (e) => {
     e.preventDefault();
-    console.log(newCredentials.email);
-    console.log(newCredentials.password);
-    console.log(newCredentials.mobile);
-    setNewCredentials({ email: '', password: '', mobile: '' });
+    try {
+      const ax = await axios({
+        method: 'POST',
+        url: `${baseUrl}/signup`,
+        data: {
+          email: newCredentials.user,
+          password: newCredentials.password,
+          passwordConfirm: newCredentials.confirmPassword,
+          phone: newCredentials.mobile,
+          name: newCredentials.name,
+        },
+        withCredentials: true,
+      });
+      console.log(ax);
+    } catch (err) {
+      console.log(err);
+    }
+    setNewCredentials({
+      name: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+      mobile: 0,
+    });
   };
 
   return (
@@ -113,8 +142,11 @@ const Login = () => {
                     <br />
                     <a
                       href="#signup"
+                      // data-target="#signup"
                       className="p-lower3 center blue-text alower3 modal-trigger"
-                      onClick={() => setIsLogin((prevState) => !prevState)}
+                      onClick={() => {
+                        setIsLogin((prevState) => !prevState);
+                      }}
                     >
                       New to Flipkart? Create an account
                     </a>
@@ -136,6 +168,21 @@ const Login = () => {
             </div>
             <div className="col center right-col2 s7">
               <div className="row">
+                <div class="input-field col s12">
+                  <input
+                    type="text"
+                    id="autocomplete-input"
+                    class="autocomplete label-input"
+                    value={newCredentials.name}
+                    onChange={(e) => {
+                      setNewCredentials({
+                        ...newCredentials,
+                        name: e.target.value,
+                      });
+                    }}
+                  />
+                  <label for="autocomplete-input">Enter Name</label>
+                </div>
                 <div class="input-field col s12">
                   <input
                     type="text"
@@ -168,6 +215,21 @@ const Login = () => {
                 </div>
                 <div class="input-field col s12">
                   <input
+                    type="password"
+                    id="autocomplete-input"
+                    class="autocomplete label-input"
+                    value={newCredentials.confirmPassword}
+                    onChange={(e) => {
+                      setNewCredentials({
+                        ...newCredentials,
+                        confirmPassword: e.target.value,
+                      });
+                    }}
+                  />
+                  <label for="autocomplete-input">Confirm Password</label>
+                </div>
+                <div class="input-field col s12">
+                  <input
                     type="number"
                     id="autocomplete-input3"
                     class="autocomplete label-input"
@@ -193,11 +255,11 @@ const Login = () => {
                       Privacy Policy.
                     </a>
                   </p>
-                  <a class="login-btn2 btn" onClick={handleNewLogin}>
+                  <a href="/" class="login-btn2 btn" onClick={handleNewLogin}>
                     Continue
                   </a>
-                  <br/>
-                  <a class="otp-btn2 btn modal-close" href="#!">
+                  <br />
+                  <a class="otp-btn2 btn modal-close" href="/">
                     Existing User? Log in
                   </a>
                 </div>
