@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './Login.css';
 import 'materialize-css/dist/css/materialize.min.css';
 
+const baseUrl = 'http://localhost:5000/api/users';
+
 const Login = () => {
   const [credentials, setCredentials] = useState({ user: '', password: '' });
+  const [isLogin, setIsLogin] = useState(true);
   const [newCredentials, setNewCredentials] = useState({
     email: '',
     password: '',
@@ -12,8 +16,17 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log(credentials.user);
-    console.log(credentials.password);
+    alert(credentials.user);
+    alert(credentials.password);
+    const ax = axios({
+      method: 'POST',
+      url: `${baseUrl}/login`,
+      data: {
+        email: credentials.user,
+        password: credentials.password,
+      },
+    });
+    console.log(ax);
     setCredentials({ user: '', password: '' });
   };
 
@@ -34,74 +47,84 @@ const Login = () => {
 
   return (
     <div className="login">
-      <div id="login" class="modal">
-        <div class="modal-content">
-          <div className="row">
-            <div className="col left-col s5">
-              <h4>Login</h4>
-              <p>Get access to your Orders, Wishlist and Recommendations</p>
-              <div className="log_img"></div>
-            </div>
-            <div className="col center right-col s7">
-              <div className="row">
-                <div class="input-field col s12">
-                  <input
-                    type="text"
-                    id="autocomplete-input"
-                    class="autocomplete label-input"
-                    value={credentials.user}
-                    onChange={(e) => {
-                      setCredentials({ ...credentials, user: e.target.value });
-                    }}
-                  />
-                  <label for="autocomplete-input">
-                    Enter Email/Mobile Number
-                  </label>
-                </div>
-                <div class="input-field col s12">
-                  <input
-                    type="password"
-                    id="autocomplete-input2"
-                    class="autocomplete label-input"
-                    value={credentials.password}
-                    onChange={(e) => {
-                      setCredentials({
-                        ...credentials,
-                        password: e.target.value,
-                      });
-                    }}
-                  />
-                  <label for="autocomplete-input2">Enter Password</label>
-                  <p className="p-lower">
-                    By continuing, you agree to Flipkart's{' '}
-                    <a href="#terms" className="blue-text alower">
-                      Terms of Use
-                    </a>{' '}
-                    and{' '}
-                    <a href="#policy" className="blue-text alower">
-                      Privacy Policy.
+      {isLogin && (
+        <div id="login" class="modal">
+          <div class="modal-content">
+            <div className="row">
+              <div className="col left-col s5">
+                <h4>Login</h4>
+                <p>Get access to your Orders, Wishlist and Recommendations</p>
+                <div className="log_img"></div>
+              </div>
+              <div className="col center right-col s7">
+                <div className="row">
+                  <div class="input-field col s12">
+                    <input
+                      type="text"
+                      id="autocomplete-input"
+                      class="autocomplete label-input"
+                      value={credentials.user}
+                      onChange={(e) => {
+                        setCredentials({
+                          ...credentials,
+                          user: e.target.value,
+                        });
+                      }}
+                    />
+                    <label for="autocomplete-input">
+                      Enter Email/Mobile Number
+                    </label>
+                  </div>
+                  <div class="input-field col s12">
+                    <input
+                      type="password"
+                      id="autocomplete-input2"
+                      class="autocomplete label-input"
+                      value={credentials.password}
+                      onChange={(e) => {
+                        setCredentials({
+                          ...credentials,
+                          password: e.target.value,
+                        });
+                      }}
+                    />
+                    <label for="autocomplete-input2">Enter Password</label>
+                    <p className="p-lower">
+                      By continuing, you agree to Flipkart's{' '}
+                      <a href="#terms" className="blue-text alower">
+                        Terms of Use
+                      </a>{' '}
+                      and{' '}
+                      <a href="#policy" className="blue-text alower">
+                        Privacy Policy.
+                      </a>
+                    </p>
+                    <a
+                      class="login-btn btn"
+                      href="#login"
+                      onClick={handleLogin}
+                    >
+                      Login
                     </a>
-                  </p>
-                  <a class="login-btn btn" href="#login" onClick={handleLogin}>
-                    Login
-                  </a>
-                  <p className="p-lower2">OR</p>
-                  <a class="otp-btn btn" href="#otp" onClick={handleOTP}>
-                    Request OTP
-                  </a>
-                  <br />
-                  <a
-                    href="#signup"
-                    className="p-lower3 center blue-text alower3 modal-trigger"
-                  >
-                    New to Flipkart? Create an account
-                  </a>
+                    <p className="p-lower2">OR</p>
+                    <a class="otp-btn btn" href="#otp" onClick={handleOTP}>
+                      Request OTP
+                    </a>
+                    <br />
+                    <a
+                      href="#signup"
+                      className="p-lower3 center blue-text alower3 modal-trigger"
+                      onClick={() => setIsLogin((prevState) => !prevState)}
+                    >
+                      New to Flipkart? Create an account
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
 
       <div id="signup" class="modal">
         <div class="modal-content">
