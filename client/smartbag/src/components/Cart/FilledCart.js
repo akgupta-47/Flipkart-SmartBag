@@ -62,7 +62,7 @@ const FilledCart = (props) => {
             })}
           </div>
           <div className="porder">
-            <Link class="cart-btn btn" href="#pay">
+            <Link to="/cart" class="cart-btn btn" href="#pay">
               Place Order
             </Link>
           </div>
