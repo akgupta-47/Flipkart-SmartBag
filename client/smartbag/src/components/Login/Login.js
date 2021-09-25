@@ -196,6 +196,7 @@ const Login = () => {
                   <a class="login-btn2 btn" onClick={handleNewLogin}>
                     Continue
                   </a>
+                  <br/>
                   <a class="otp-btn2 btn modal-close" href="#!">
                     Existing User? Log in
                   </a>

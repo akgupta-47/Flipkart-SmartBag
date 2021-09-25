@@ -5,17 +5,17 @@ import './Cart.css';
 const CartNavbar = (props) => {
   const [search, setSearch] = useState('');
   const links = props.islogged ? (
-    <div className="login">
-      <a class="waves-light btn modal-trigger" href="#login">
-        LOGIN
-      </a>
-      <Login />
-    </div>
-  ) : (
     <div className="logout">
       <a className="alog" href="#logout">
         Log out
       </a>
+    </div>
+  ) : (
+    <div className="login">
+      <a class="lbtn btn modal-trigger" href="#login">
+        LOGIN
+      </a>
+      <Login />
     </div>
   );
   const handleSearch = (e) => {
