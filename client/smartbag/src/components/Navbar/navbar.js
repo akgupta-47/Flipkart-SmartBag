@@ -33,7 +33,7 @@ function Navbar() {
           </a>
           <ul className=" hide-on-med-and-down">
             <li>
-              <form>
+              {/* <form>
                 <div className="input-field white black-text">
                   <input
                     id="search"
@@ -47,9 +47,12 @@ function Navbar() {
                   </label>
                   <i className="material-icons">close</i>
                 </div>
-              </form>
+              </form> */}
             </li>
             <li>
+              <a class="waves-light btn modal-trigger" href="#login">
+                LOGIN
+              </a>
               <Login />
             </li>
             <li>

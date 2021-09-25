@@ -1,0 +1,38 @@
+nav {
+  background-color: #2870f0;
+}
+
+.nav-wrapper {
+  justify-content: left;
+  padding-left: 200px !important;
+}
+
+input[type='search'] {
+  padding: 10px 150px 10px 10px !important;
+  margin-bottom: 5px !important;
+}
+
+.searchbar {
+  margin-top: 0px !important;
+  padding-bottom: 20px !important;
+}
+.search {
+  padding-left: 50px;
+  position: absolute !important;
+  top: -8px !important;
+  left: 350px;
+}
+.login {
+  position: absolute;
+  right: 130px;
+  top: 0px;
+}
+
+.logout {
+  position: absolute;
+  right: 130px;
+  top: 0px;
+}
+.alog {
+  font-weight: 500 !important;
+}
