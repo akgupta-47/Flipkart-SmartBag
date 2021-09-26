@@ -3,6 +3,7 @@ import CartNavbar from './CartNavbar';
 import CartDetails from './CartDetails';
 import './Cart.css';
 import Footer from '../Footer/Footer';
+import MainFooter from '../Footer/MainFooter';
 
 const Cart = () => {
   const [products, setProducts] = useState([
@@ -35,6 +36,7 @@ const Cart = () => {
         setProducts={setProducts}
       />
       <Footer />
+      <MainFooter />
     </div>
   );
 };

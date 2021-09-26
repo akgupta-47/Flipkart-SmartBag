@@ -54,6 +54,15 @@ const FilledCart = (props) => {
                         >
                           Remove from Cart
                         </a>
+                        <a
+                          className="acart"
+                          href="#"
+                          onClick={() => {
+                            handleRemove(product.id);
+                          }}
+                        >
+                          Add Again
+                        </a>
                       </div>
                     </div>
                   </div>

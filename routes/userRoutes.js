@@ -9,6 +9,7 @@ router.post('/signup', authController.signUp);
 router.patch('/signup/:token', authController.confirmSignup);
 router.post('/login', authController.login);
 router.get('/logout', authController.protect, authController.logout);
+router.get('/get-cookie', authController.getCookie);
 
 // user password change routes
 router.post('/forgot-password', authController.forgotPassword);
