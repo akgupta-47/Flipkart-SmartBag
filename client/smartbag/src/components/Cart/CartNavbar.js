@@ -6,7 +6,7 @@ const CartNavbar = (props) => {
   const [search, setSearch] = useState('');
   const links = props.islogged ? (
     <div className="logout">
-      <a className="alog" href="#logout">
+      <a className="lbtn btn" href="#logout">
         Log out
       </a>
     </div>

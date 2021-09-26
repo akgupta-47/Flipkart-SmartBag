@@ -8,7 +8,6 @@ const baseUrl = 'http://localhost:5000/api/users';
 const Login = () => {
   const [credentials, setCredentials] = useState({ user: '', password: '' });
   const [isLogin, setIsLogin] = useState(true);
-  // const [isSignUp, setIsSignUp] = useState(false);
   const [newCredentials, setNewCredentials] = useState({
     name: '',
     email: '',
@@ -39,13 +38,6 @@ const Login = () => {
     setIsLogin(false);
   };
 
-  const handleOTP = (e) => {
-    e.preventDefault();
-    console.log(credentials.user);
-    console.log(credentials.password);
-    setCredentials({ user: '', password: '' });
-  };
-
   const handleNewLogin = async (e) => {
     e.preventDefault();
     try {
@@ -53,7 +45,7 @@ const Login = () => {
         method: 'POST',
         url: `${baseUrl}/signup`,
         data: {
-          email: newCredentials.user,
+          email: newCredentials.email,
           password: newCredentials.password,
           passwordConfirm: newCredentials.confirmPassword,
           phone: newCredentials.mobile,
@@ -136,7 +128,7 @@ const Login = () => {
                       Login
                     </a>
                     <p className="p-lower2">OR</p>
-                    <a class="otp-btn btn" href="#otp" onClick={handleOTP}>
+                    <a class="otp-btn btn" href="#otp">
                       Request OTP
                     </a>
                     <br />
@@ -259,7 +251,7 @@ const Login = () => {
                     Continue
                   </a>
                   <br />
-                  <a class="otp-btn2 btn modal-close" href="/">
+                  <a class="otp-btn2 btn modal-close" href="#!">
                     Existing User? Log in
                   </a>
                 </div>
