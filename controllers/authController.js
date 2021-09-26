@@ -116,16 +116,22 @@ exports.login = catchAsync(async (req, res, next) => {
 // a clever way to overWrite the cookie with some dummy text so
 // it does not know which user to log in
 exports.logout = (req, res) => {
-  res.cookie('jwt', 'GuessWhatYouJustGotLoggedOut', {
-    expires: new Date(Date.now() + 10 * 1000),
-    httpOnly: true,
-  });
+  // console.log('i reached here 3');
+  // console.log(res.cookie);
+  // res.cookie('jwt', 'GuessWhatYouJustGotLoggedOut', {
+  //   expires: new Date(Date.now() + 10 * 1000),
+  //   httpOnly: true,
+  // });
+  console.log(res);
+  res.clearCookie('jwt');
   res.status(200).json({ status: 'success' });
 };
 
 // protect routes
 exports.protect = catchAsync(async (req, res, next) => {
   // getting token and check if it is theres
+  // console.log('i reached here');
+  // console.log(req.signedCookies);
   let token;
   if (
     req.headers.authorization &&
@@ -133,8 +139,9 @@ exports.protect = catchAsync(async (req, res, next) => {
   ) {
     token = req.headers.authorization.split(' ')[1];
     //console.log(token);
-  } else if (req.cookie.jwt) {
-    token = req.jwt.cookie;
+  } else if (req.cookies.jwt) {
+    // console.log('i reached here 2');
+    token = req.cookies.jwt;
   }
   if (!token) {
     return next(
