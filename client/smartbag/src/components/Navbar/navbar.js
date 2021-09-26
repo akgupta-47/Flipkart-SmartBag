@@ -26,15 +26,15 @@ function Navbar() {
         </li>
       </ul>
 
-      <nav className="nav-extended ">
-        <div className="nav-wrapper">
+      <nav className="nav-extended  ">
+        <div className="nav-wrapper valign-wrapper">
           <a href="#!" className="heading ">
             <i>Grocery</i>
           </a>
           <ul className=" hide-on-med-and-down">
             <li>
               <form>
-                <div className="input-field white black-text">
+                <div className="input-field white black-text" >
                   <input
                     id="search"
                     className="black"
@@ -43,9 +43,9 @@ function Navbar() {
                     required
                   />
                   <label className="label-icon" for="search">
-                    <i className="material-icons">search</i>
+                    <i className="material-icons" id="srch">search</i>
                   </label>
-                  <i className="material-icons">close</i>
+                  
                 </div>
               </form>
             </li>
