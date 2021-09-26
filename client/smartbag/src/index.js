@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'materialize-css/dist/css/materialize.min.css';
-import { AuthContextProvider } from './store/AuthaContext';
+import { AuthContextProvider } from './store/AuthContext';
 
 ReactDOM.render(
   <AuthContextProvider>

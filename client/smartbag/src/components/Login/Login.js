@@ -3,7 +3,7 @@ import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import './Login.css';
 import 'materialize-css/dist/css/materialize.min.css';
-import AuthContext from '../../store/AuthaContext';
+import AuthContext from '../../store/AuthContext';
 
 const baseUrl = 'http://localhost:5000/api/users';
 
@@ -114,6 +114,7 @@ const Login = () => {
                       type="password"
                       id="autocomplete-input2"
                       class="autocomplete label-input"
+                      minLength="8"
                       value={credentials.password}
                       onChange={(e) => {
                         setCredentials({
@@ -209,6 +210,7 @@ const Login = () => {
                     type="password"
                     id="autocomplete-input5"
                     class="autocomplete label-input"
+                    minLength="8"
                     value={newCredentials.password}
                     onChange={(e) => {
                       setNewCredentials({
@@ -224,6 +226,7 @@ const Login = () => {
                     type="password"
                     id="autocomplete-input"
                     class="autocomplete label-input"
+                    minLength="8"
                     value={newCredentials.confirmPassword}
                     onChange={(e) => {
                       setNewCredentials({
