@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import './navbar.css';
 import 'materialize-css/dist/css/materialize.min.css';
 import Login from '../Login/Login';
@@ -11,6 +12,11 @@ import Img6 from '../../Images/navbar/6.jpg';
 import Img7 from '../../Images/navbar/7.png';
 
 function Navbar() {
+  const [search, setSearch] = useState('');
+  const handleSearch = (e) => {
+    console.log(search);
+    setSearch('');
+  };
   return (
     <div classNameName="navbar center">
       <ul id="dropdown1" className="dropdown-content">
@@ -33,48 +39,46 @@ function Navbar() {
           </a>
           <ul className=" hide-on-med-and-down">
             <li>
-              <form>
-                <div className="input-field white black-text" >
-                  <input
-                    id="search"
-                    className="black"
-                    placeholder="Search here.."
-                    type="search"
-                    required
-                  />
-                  <label className="label-icon" for="search">
-                    <i className="material-icons" id="srch">search</i>
-                  </label>
-                  
-                </div>
-              </form>
+              <div class="input-field">
+                <input
+                  placeholder="Search for products, brands and more"
+                  id="search"
+                  type="search"
+                  value={search}
+                  onChange={(e) => {
+                    setSearch(e.target.value);
+                  }}
+                  required
+                />
+                <i className="material-icons right icon_srch valign-wrapper">search</i>
+              </div>
             </li>
+          </ul>
+          <ul className="rightnav right hide-on-med-and-down">
             <li>
+              <a class="lbtn btn modal-trigger" href="#login">
+                LOGIN
+              </a>
               <Login />
             </li>
             <li>
-              <a className="dropdown-trigger" href="#" data-target="dropdown1">
-                A link<i class="material-icons right">arrow_drop_down</i>
-              </a>
+              <Link to="/bag" href="#">
+                Smartbag<i class="material-icons right">star</i>
+              </Link>
             </li>
             <li>
-              <a className="dropdown-trigger" href="#" data-target="dropdown1">
-                A second link<i class="material-icons right">arrow_drop_down</i>
-              </a>
-            </li>
-            <li>
-              <a className="dropdown-trigger" href="#" data-target="dropdown1">
-                A third link<i class="material-icons right">arrow_drop_down</i>
-              </a>
+              <Link to="/cart" href="#">
+                My Cart <i class="material-icons right">shopping_cart</i>
+              </Link>
             </li>
           </ul>
         </div>
-        <div className="nav-content white hide-on-med-and-down">
+        <div className="nav-content white hide-on-med-and-down center">
           <div className="container center" id="nav_container">
             <a href="#" className="dropdown-trigger" data-target="dropdown1">
               <img src={Img} className="responsive-img" />
               <br />
-              <span className="black-text valign-wrapper nav_cont">
+              <span className="black-text valign-wrapper nav_cont center">
                 Staples<i class="material-icons right">arrow_drop_down</i>
               </span>
             </a>
@@ -83,7 +87,7 @@ function Navbar() {
             <a href="#" className="dropdown-trigger" data-target="dropdown1">
               <img src={Img2} className="responsive-img" />
               <br />
-              <span className="black-text valign-wrapper nav_cont">
+              <span className="black-text valign-wrapper nav_cont center">
                 Snacks & Beverages
                 <i class="material-icons right">arrow_drop_down</i>
               </span>
