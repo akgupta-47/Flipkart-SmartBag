@@ -51,7 +51,7 @@ const CartNavbar = (props) => {
             </i>
           </div>
           <div className="righthome">
-            <Link to="/home" href="#home">
+            <Link to="/" href="#home">
               Home
             </Link>
           </div>

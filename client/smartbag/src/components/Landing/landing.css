@@ -1,3 +1,18 @@
 .landing {
   background-color: #f0f0f0 !important;
 }
+.lnd_p {
+  font-size: 12px !important;
+  color: #878787;
+  text-align: justify;
+}
+
+.land_cont {
+  padding-left: 120px !important;
+  padding-right: 120px !important;
+}
+
+.lnd_img{
+  position: relative;
+  margin-left: 14px;
+}
