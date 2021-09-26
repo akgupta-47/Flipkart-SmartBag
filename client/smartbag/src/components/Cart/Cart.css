@@ -1,3 +1,9 @@
+.heading1 {
+  padding-bottom: 30px !important;
+  margin-right: -60px !important;
+  margin-top: -8px;
+}
+
 nav {
   background-color: #2870f0;
 }
@@ -8,23 +14,27 @@ nav {
 }
 
 input[type='search'] {
-  padding: 10px 150px 10px 10px !important;
+  padding: 5px 260px 5px 10px !important;
   margin-bottom: 5px !important;
 }
 
 .searchbar {
-  margin-top: 0px !important;
+  margin-top: -115px !important;
+  margin-left: 150px !important;
   padding-bottom: 20px !important;
+}
+.searchin {
+  padding-right: 50px !important;
 }
 .search {
   padding-left: 50px;
   position: absolute !important;
-  top: -8px !important;
+  top: -9px !important;
   left: 350px;
 }
 .login {
   position: absolute;
-  right: 130px;
+  right: 200px;
   top: 0px;
 }
 
@@ -232,4 +242,11 @@ h6 {
 }
 .cart-btn:focus {
   background: #fb641b;
+}
+.righthome {
+  position: absolute;
+  right: 320px;
+  top: 1px;
+  font-size: 16px;
+  font-weight: 500 !important;
 }

@@ -36,8 +36,8 @@ function Navbar() {
         </li>
       </ul>
 
-      <nav className="nav-extended ">
-        <div className="nav-wrapper">
+      <nav className="nav-extended  ">
+        <div className="nav-wrapper valign-wrapper">
           <a href="#!" className="heading ">
             <i>Grocery</i>
           </a>
@@ -45,7 +45,7 @@ function Navbar() {
             <li>
               <div class="input-field">
                 <input
-                  placeholder="Search for products, brands and more"
+                  placeholder="Search for Products..."
                   id="search"
                   type="search"
                   value={search}
@@ -54,32 +54,13 @@ function Navbar() {
                   }}
                   required
                 />
-                <i
-                  class="material-icons search"
-                  onClick={handleSearch}
-                  href="#search"
-                >
+                <i className="material-icons right icon_srch valign-wrapper">
                   search
                 </i>
               </div>
             </li>
-            {/* <li>
-              <a className="dropdown-trigger" href="#" data-target="dropdown1">
-                A link<i class="material-icons right">arrow_drop_down</i>
-              </a>
-            </li>
-            <li>
-              <a className="dropdown-trigger" href="#" data-target="dropdown1">
-                A second link<i class="material-icons right">arrow_drop_down</i>
-              </a>
-            </li>
-            <li>
-              <a className="dropdown-trigger" href="#" data-target="dropdown1">
-                A third link<i class="material-icons right">arrow_drop_down</i>
-              </a>
-            </li> */}
           </ul>
-          <ul className="rightnav">
+          <ul className="rightnav right hide-on-med-and-down">
             {!isLoggedIn && (
               <li>
                 <a class="lbtn btn modal-trigger" href="#login">
@@ -109,12 +90,12 @@ function Navbar() {
             )}
           </ul>
         </div>
-        <div className="nav-content white hide-on-med-and-down">
+        <div className="nav-content white hide-on-med-and-down center">
           <div className="container center" id="nav_container">
             <a href="#" className="dropdown-trigger" data-target="dropdown1">
               <img src={Img} className="responsive-img" />
               <br />
-              <span className="black-text valign-wrapper nav_cont">
+              <span className="black-text valign-wrapper nav_cont center">
                 Staples<i class="material-icons right">arrow_drop_down</i>
               </span>
             </a>
@@ -123,7 +104,7 @@ function Navbar() {
             <a href="#" className="dropdown-trigger" data-target="dropdown1">
               <img src={Img2} className="responsive-img" />
               <br />
-              <span className="black-text valign-wrapper nav_cont">
+              <span className="black-text valign-wrapper nav_cont center">
                 Snacks & Beverages
                 <i class="material-icons right">arrow_drop_down</i>
               </span>
