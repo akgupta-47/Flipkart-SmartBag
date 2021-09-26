@@ -1,0 +1,36 @@
+.products {
+  background-color: #f0f0f0 !important;
+}
+.prod_rt_cont {
+  background-color: white;
+}
+#item_img_cont {
+  height: 200px !important;
+}
+#item_img {
+  height: 150px;
+  left: 30%;
+}
+#head_item {
+  font-size: 13px;
+  padding-left: 10px;
+}
+#item_card {
+  /* height: 300px!important; */
+  padding: 10px;
+  margin: 6px;
+}
+#item_price {
+  padding-left: 10px !important;
+}
+#disc_item {
+  font-size: 16px !important;
+  margin-left: -30px;
+  font-weight: bold;
+}
+/* .item {
+    margin:20px!important;
+} */
+.prod_cont{
+    margin:0 100px;
+}
