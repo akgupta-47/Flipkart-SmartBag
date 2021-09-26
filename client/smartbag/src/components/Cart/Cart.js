@@ -27,9 +27,9 @@ const Cart = () => {
   ]);
   return (
     <div className="cart">
-      <CartNavbar islogged={false} />
+      <CartNavbar islogged={true} />
       <CartDetails
-        islogged={false}
+        islogged={true}
         isEmpty={false}
         products={products}
         setProducts={setProducts}
