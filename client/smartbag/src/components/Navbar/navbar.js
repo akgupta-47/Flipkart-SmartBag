@@ -31,6 +31,7 @@ function Navbar() {
         method: 'GET',
         url: `${baseUrl}/logout`,
         data: {},
+        withCredentials: true,
       });
       authCtx.logout();
     } catch (err) {

@@ -1,3 +1,4 @@
+/* global $ */
 import React, { useState, useContext } from 'react';
 import Swal from 'sweetalert2';
 import axios from 'axios';
@@ -83,6 +84,14 @@ const Login = () => {
     });
   };
 
+  function closeAll() {
+    $('#signup').modal('close');
+  }
+  function closeone() {
+    $('#signup').modal('open');
+    $('#login').modal('close');
+  }
+
   return (
     <div className="login">
       {isLogin && (
@@ -153,8 +162,9 @@ const Login = () => {
                     <a
                       href="#signup"
                       // data-target="#signup"
-                      className="p-lower3 center blue-text alower3 modal-trigger"
+                      className="p-lower3 center blue-text alower3"
                       onClick={() => {
+                        closeone();
                         setIsLogin((prevState) => !prevState);
                       }}
                     >
@@ -271,7 +281,7 @@ const Login = () => {
                     Continue
                   </a>
                   <br />
-                  <a class="otp-btn2 btn modal-close" href="#!">
+                  <a class="otp-btn2 btn" onClick={closeAll} href="#!">
                     Existing User? Log in
                   </a>
                 </div>
