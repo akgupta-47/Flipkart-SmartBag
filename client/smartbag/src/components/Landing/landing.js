@@ -1,4 +1,5 @@
 import React from 'react';
+import './landing.css'
 import Navbar from '../Navbar/navbar';
 
 function Landing(){
@@ -6,6 +7,7 @@ function Landing(){
         <div className="landing">
             
             <Navbar />
+            
         </div>
        
     ); 
