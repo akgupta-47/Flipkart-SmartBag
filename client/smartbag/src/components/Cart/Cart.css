@@ -1,3 +1,9 @@
+.heading1 {
+  padding-bottom: 30px !important;
+  margin-right: 20px;
+  margin-top: -5px;
+}
+
 nav {
   background-color: #2870f0;
 }
@@ -232,4 +238,11 @@ h6 {
 }
 .cart-btn:focus {
   background: #fb641b;
+}
+.righthome {
+  position: absolute;
+  right: 320px;
+  top: 1px;
+  font-size: 16px;
+  font-weight: 500 !important;
 }

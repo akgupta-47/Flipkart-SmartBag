@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Login from '../Login/Login';
 import './Cart.css';
 
@@ -26,6 +27,9 @@ const CartNavbar = (props) => {
     <div className="CartNavbar">
       <nav>
         <div class="nav-wrapper">
+          <a href="#!" className="heading1">
+            <i className="heading1">Grocery</i>
+          </a>
           <div class="input-field searchbar">
             <input
               placeholder="Search for products, brands and more"
@@ -44,6 +48,11 @@ const CartNavbar = (props) => {
             >
               search
             </i>
+          </div>
+          <div className="righthome">
+            <Link to="/home" href="#home">
+              Home
+            </Link>
           </div>
           {links}
         </div>
