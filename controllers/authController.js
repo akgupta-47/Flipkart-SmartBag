@@ -42,6 +42,14 @@ const createSignToken = (user, statusCode, res) => {
   });
 };
 
+exports.getCookie = (req, res) => {
+  const cookie = req.cookies.jwt;
+  res.status(200).json({
+    status: 'success',
+    data: cookie,
+  });
+};
+
 exports.confirmSignup = catchAsync(async (req, res, next) => {
   const { token } = req.params;
 
