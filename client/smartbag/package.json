@@ -25,7 +25,13 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "env": {
+      "browser": true,
+      "commonjs": true,
+      "es6": true,
+      "jquery": true
+    }
   },
   "browserslist": {
     "production": [
