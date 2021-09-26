@@ -41,7 +41,7 @@ function Navbar() {
             <li>
               <div class="input-field">
                 <input
-                  placeholder="Search for products, brands and more"
+                  placeholder="Search for Products..."
                   id="search"
                   type="search"
                   value={search}
@@ -50,7 +50,9 @@ function Navbar() {
                   }}
                   required
                 />
-                <i className="material-icons right icon_srch valign-wrapper">search</i>
+                <i className="material-icons right icon_srch valign-wrapper">
+                  search
+                </i>
               </div>
             </li>
           </ul>

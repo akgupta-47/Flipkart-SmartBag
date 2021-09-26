@@ -32,8 +32,9 @@ const CartNavbar = (props) => {
           </a>
           <div class="input-field searchbar">
             <input
-              placeholder="Search for products, brands and more"
+              placeholder="Search for products..."
               id="search"
+              className="searchin"
               type="search"
               value={search}
               onChange={(e) => {

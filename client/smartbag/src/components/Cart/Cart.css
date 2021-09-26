@@ -1,7 +1,7 @@
 .heading1 {
   padding-bottom: 30px !important;
-  margin-right: 20px;
-  margin-top: -5px;
+  margin-right: -60px !important;
+  margin-top: -8px;
 }
 
 nav {
@@ -14,18 +14,22 @@ nav {
 }
 
 input[type='search'] {
-  padding: 10px 150px 10px 10px !important;
+  padding: 5px 260px 5px 10px !important;
   margin-bottom: 5px !important;
 }
 
 .searchbar {
-  margin-top: 0px !important;
+  margin-top: -115px !important;
+  margin-left: 150px !important;
   padding-bottom: 20px !important;
+}
+.searchin {
+  padding-right: 50px !important;
 }
 .search {
   padding-left: 50px;
   position: absolute !important;
-  top: -8px !important;
+  top: -9px !important;
   left: 350px;
 }
 .login {
