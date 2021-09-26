@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './navbar.css';
 import 'materialize-css/dist/css/materialize.min.css';
@@ -10,6 +10,7 @@ import Img4 from '../../Images/navbar/4.jpg';
 import Img5 from '../../Images/navbar/5.jpg';
 import Img6 from '../../Images/navbar/6.jpg';
 import Img7 from '../../Images/navbar/7.png';
+import AuthContext from '../../store/AuthaContext';
 
 function Navbar() {
   const [search, setSearch] = useState('');
@@ -17,6 +18,9 @@ function Navbar() {
     console.log(search);
     setSearch('');
   };
+  const authCtx = useContext(AuthContext);
+  const isLoggedIn = authCtx.isLoggedIn;
+
   return (
     <div classNameName="navbar center">
       <ul id="dropdown1" className="dropdown-content">
@@ -76,22 +80,33 @@ function Navbar() {
             </li> */}
           </ul>
           <ul className="rightnav">
-            <li>
-              <a class="lbtn btn modal-trigger" href="#login">
-                LOGIN
-              </a>
-              <Login />
-            </li>
-            <li>
-              <Link to="/bag" href="#">
-                Smartbag<i class="material-icons right">star</i>
-              </Link>
-            </li>
-            <li>
-              <Link to="/cart" href="#">
-                My Cart <i class="material-icons right">shopping_cart</i>
-              </Link>
-            </li>
+            {!isLoggedIn && (
+              <li>
+                <a class="lbtn btn modal-trigger" href="#login">
+                  LOGIN
+                </a>
+                <Login />
+              </li>
+            )}
+            {isLoggedIn && (
+              <>
+                <li>
+                  <Link to="/bag" href="#">
+                    Smartbag<i class="material-icons right">star</i>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/cart" href="#">
+                    My Cart <i class="material-icons right">shopping_cart</i>
+                  </Link>
+                </li>
+                <li>
+                  <a class="lbtn btn modal-trigger" href="#login">
+                    LOGOUT
+                  </a>
+                </li>
+              </>
+            )}
           </ul>
         </div>
         <div className="nav-content white hide-on-med-and-down">

@@ -3,11 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import 'materialize-css/dist/css/materialize.min.css'
+import 'materialize-css/dist/css/materialize.min.css';
+import { AuthContextProvider } from './store/AuthaContext';
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <AuthContextProvider>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </AuthContextProvider>,
   document.getElementById('root')
 );
 

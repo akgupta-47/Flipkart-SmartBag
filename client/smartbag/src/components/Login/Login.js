@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import './Login.css';
 import 'materialize-css/dist/css/materialize.min.css';
+import AuthContext from '../../store/AuthaContext';
 
 const baseUrl = 'http://localhost:5000/api/users';
 
@@ -16,12 +17,14 @@ const Login = () => {
     mobile: 0,
   });
 
+  const authCtx = useContext(AuthContext);
+
   const handleLogin = async (e) => {
     e.preventDefault();
     // alert(credentials.user);
     // alert(credentials.password);
     try {
-      const ax = await axios({
+      const res = await axios({
         method: 'POST',
         url: `${baseUrl}/login`,
         data: {
@@ -30,7 +33,8 @@ const Login = () => {
         },
         withCredentials: true,
       });
-      console.log(ax);
+      console.log(res.data.token);
+      authCtx.login(res.data.token);
     } catch (err) {
       console.log(err);
     }
