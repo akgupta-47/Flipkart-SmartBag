@@ -22,3 +22,48 @@ a.alowerf1 {
   font-size: 14px;
   font-weight: 450 !important;
 }
+
+.fp {
+  color: white;
+  font-size: 12px;
+  line-height: 16px;
+}
+.fpa {
+  color: white;
+  font-size: 12px;
+  line-height: 18px;
+}
+.mfooter {
+  background-color: #172337;
+  padding: 30px;
+}
+.uf {
+  padding-bottom: 20px;
+}
+
+.fh {
+  color: #878787;
+  font-size: 13px;
+}
+
+.fha {
+  color: #878787;
+  font-size: 12px;
+}
+
+.lif {
+  color: white;
+  display: inline;
+}
+.sf {
+  padding-left: 10px !important;
+  padding-right: 60px;
+}
+.endl {
+  border-top: 1px solid #454d5e;
+  padding-left: 110px;
+  padding-top: 30px;
+}
+.fb {
+  border-left: 1px solid #454d5e;
+}

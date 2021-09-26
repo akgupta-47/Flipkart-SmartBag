@@ -1,8 +1,9 @@
 import React from 'react';
-import './landing.css'
+import './landing.css';
 import Navbar from '../Navbar/navbar';
 import Footer from '../Footer/Footer'
 import Img1 from '../../Images/landing/1.png'
+import MainFooter from '../Footer/MainFooter';
 
 function Landing(){
     return(
@@ -17,7 +18,8 @@ function Landing(){
             </div>
 
 
-            <Footer />
+            {/* <Footer /> */}
+            <MainFooter/>
         </div>
        
     ); 

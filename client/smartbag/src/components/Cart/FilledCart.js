@@ -8,7 +8,7 @@ const FilledCart = (props) => {
   const handleRemove = (key) => {
     let products = props.products;
     products = products.filter((product) => {
-      return product.id != key;
+      return product.id !== key;
     });
     props.setProducts(products);
     if (!products) props.isEmpty = true;
