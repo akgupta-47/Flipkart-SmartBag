@@ -10,7 +10,7 @@ import Img4 from '../../Images/navbar/4.jpg';
 import Img5 from '../../Images/navbar/5.jpg';
 import Img6 from '../../Images/navbar/6.jpg';
 import Img7 from '../../Images/navbar/7.png';
-import AuthContext from '../../store/AuthaContext';
+import AuthContext from '../../store/AuthContext';
 
 function Navbar() {
   const [search, setSearch] = useState('');
@@ -82,7 +82,11 @@ function Navbar() {
                   </Link>
                 </li>
                 <li>
-                  <a class="lbtn btn modal-trigger" href="#login">
+                  <a
+                    class="lbtn btn modal-trigger"
+                    href="#login"
+                    onClick={() => authCtx.logout()}
+                  >
                     LOGOUT
                   </a>
                 </li>
