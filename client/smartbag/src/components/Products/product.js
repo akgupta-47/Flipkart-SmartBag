@@ -18,8 +18,8 @@ function Products() {
         <Item />
         <Item />
         <Item />
-          </div>
-        <Footer />
+      </div>
+      <Footer />
     </div>
   );
 }
