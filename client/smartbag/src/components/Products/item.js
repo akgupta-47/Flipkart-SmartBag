@@ -1,5 +1,5 @@
 import React from 'react';
-import img from '../../Images/Items/1.png';
+import img from '../../Images/Items/13.png';
 import './product.css';
 function Item() {
   return (

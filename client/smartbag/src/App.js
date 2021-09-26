@@ -6,12 +6,9 @@ import 'materialize-css/dist/css/materialize.min.css';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import Smartbag from './components/Smartbag/Smartbag';
 import Products from './components/Products/product';
-<<<<<<< HEAD
 import Product from './components/Product/product';
-=======
 import axios from 'axios';
 import AuthContext from './store/AuthContext';
->>>>>>> e22f23612ca4bd1999c99f0b55ea14091592ea90
 
 const baseUrl = 'http://localhost:5000/api/users';
 function App() {
@@ -45,13 +42,10 @@ function App() {
             {!authCtx.isLoggedIn && <Redirect to="/" />}
           </Route>
           <Route path="/products" component={Products} />
-<<<<<<< HEAD
           <Route path="/product" component={Product} />
-=======
           <Route path="*">
             <Redirect to="/" />
           </Route>
->>>>>>> e22f23612ca4bd1999c99f0b55ea14091592ea90
         </Switch>
       </div>
     </BrowserRouter>
