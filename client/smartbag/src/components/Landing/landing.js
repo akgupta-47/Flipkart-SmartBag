@@ -3,7 +3,14 @@ import './landing.css';
 import Navbar from '../Navbar/navbar';
 import Footer from '../Footer/Footer';
 import Img1 from '../../Images/landing/1.png';
+import img2 from '../../Images/landing/3.png';
+import img3 from '../../Images/landing/4.png';
+import img4 from '../../Images/landing/5.png';
+import img5 from '../../Images/landing/6.png';
+import img6 from '../../Images/landing/7.png';
 import MainFooter from '../Footer/MainFooter';
+import { Link } from 'react-router-dom';
+import Footer1 from '../Footer/Footer';
 
 function Landing() {
   return (
@@ -30,7 +37,32 @@ function Landing() {
           opt to order online.
         </p>
         <img src={Img1} className="responsive-img center lnd_img" />
+
+        <div className="sc_row row">
+          <div className="col l8 s12 m12">
+            <Link to="/products">
+              <img src={img2} className="responsive-img" />
+            </Link>
+          </div>
+          <div className="col l4 m12  s12">
+            <Link to="/products">
+              <img src={img3} className="responsive-img" />
+              <img src={img4} className="responsive-img" />
+            </Link>
+          </div>
+        </div>
+        <img src={img5} className="responsive-img center lnd_img" />
+        <Link to="/products">
+          <img src={img6} className="responsive-img center lnd_img2" />
+        </Link>
+        {/* <div className="container row">
+          <div className="col s12 m12 l4">
+            <img src={ } className="responsive-img"/>
+          </div>
+
+        </div> */}
       </div>
+      <Footer1 />
 
       <MainFooter />
     </div>

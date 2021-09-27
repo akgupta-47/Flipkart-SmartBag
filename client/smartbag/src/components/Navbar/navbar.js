@@ -61,7 +61,7 @@ function Navbar() {
       </ul>
 
       <nav className="nav-extended  ">
-        <div className="nav-wrapper valign-wrapper">
+        <div className="nav-wrapper valign-wrapper center">
           <a href="#!" className="heading ">
             <i>Grocery</i>
           </a>
