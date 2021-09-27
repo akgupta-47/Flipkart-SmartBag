@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './Cart.css'
 
 const FilledCart = (props) => {
   const products = props.products;
@@ -62,7 +63,10 @@ const FilledCart = (props) => {
                           }}
                         >
                           Add Again
-                        </a>
+                        </a> &nbsp;
+                        <a id="qty_sign">-</a>
+                        <span id="qty_cart">1</span>
+                        <a id="qty_sign">+</a>
                       </div>
                     </div>
                   </div>

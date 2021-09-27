@@ -4,11 +4,12 @@ import './product.css';
 import img from '../../Images/Product/12.png';
 import img2 from '../../Images/Product/13.png';
 import Footer from '../Footer/MainFooter';
+import Item from '../Products/item';
 function Product() {
   return (
     <div className="product">
       <Header />
-      <div className="productpg center">
+      <div className="productpg center ">
         <img src={img} className="responsive-img" id="product_fimg" />
         <div className="row productr ">
           <div className="col l3 m12 s12">
@@ -104,6 +105,26 @@ function Product() {
             <br />
           </div>
         </div>
+        <div className="white card row z-depth-1" id="pdt_bt">
+          <p className="black-text" id="pdt_bt_head">
+            Similar Items
+          </p>
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+        </div>
+        <br />
+        <div className="white card row z-depth-1" id="pdt_bt">
+          <p className="black-text" id="pdt_bt_head">
+            Bought Together
+          </p>
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+        </div>
+        <br />
       </div>
       <Footer />
     </div>

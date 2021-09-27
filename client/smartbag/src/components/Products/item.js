@@ -4,7 +4,7 @@ import './product.css';
 function Item() {
   return (
     <div className="item">
-      <div className="card col auto" id="item_card">
+      <div className="card col auto z-depth-1" id="item_card">
         <div className="card-image " id="item_img_cont">
           <img src={img} className="responsive-img " id="item_img" />
         </div>

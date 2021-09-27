@@ -4,8 +4,8 @@
 .nav-wrapper {
   padding: 10px;
   /* margin-left: 2rem !important; */
-  display: flex;
-  justify-content: center!important;
+  /* display: flex;
+  justify-content: center!important; */
 }
 .nav-wrapper .input-field input[type='search'] {
   background-color: white;

@@ -1,6 +1,7 @@
 .productpg {
   padding: 0 100px;
 }
+
 #prod_cont {
   height: 500px;
   border: solid 1px #878787;
@@ -13,6 +14,7 @@
 .productr {
   padding: 0 80px;
   height: 100%;
+  
 }
 #shareproduct {
   bottom: 45px;
@@ -60,4 +62,13 @@
   left: 20px !important;
   position: relative;
   /* border: solid 2px #878787; */
+}
+
+#pdt_bt {
+  padding: 30px;
+  margin: 0 80px;
+  border: none;
+}
+#pdt_bt_head {
+  padding: 4px;
 }

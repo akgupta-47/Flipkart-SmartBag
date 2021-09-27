@@ -34,6 +34,7 @@ const Cart = () => {
         isEmpty={false}
         products={products}
         setProducts={setProducts}
+        
       />
       <Footer />
       <MainFooter />
