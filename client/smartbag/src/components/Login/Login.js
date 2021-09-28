@@ -100,7 +100,7 @@ const Login = () => {
             <div className="row">
               <div className="col left-col s5">
                 <h4>Login</h4>
-                <p>Get access to your Orders, Wishlist and Recommendations</p>
+                <p className="plogin">Get access to your Orders, Wishlist and Recommendations</p>
                 <div className="log_img"></div>
               </div>
               <div className="col center right-col s7">
@@ -183,7 +183,7 @@ const Login = () => {
           <div className="row">
             <div className="col left-col s5">
               <h4 className="h4sign">Looks like you're new here!</h4>
-              <p>Sign up with your mobile number to get started</p>
+              <p className="plogin">Sign up with your mobile number to get started</p>
               <div className="signup_img"></div>
             </div>
             <div className="col center right-col2 s7">

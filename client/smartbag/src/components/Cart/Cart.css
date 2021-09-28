@@ -5,7 +5,7 @@
 }
 
 nav {
-  background-color: #2870f0;
+  background-color: rgb(41, 170, 41);
 }
 
 .nav-wrapper {
@@ -259,7 +259,50 @@ h6 {
   padding-right: 20px;
 }
 
-#qty_sign{
+#qty_sign {
   font-weight: 700;
   /* font-size: 12px!important; */
+}
+.orderm {
+  padding: 30px;
+  align-items: center;
+  width: 30%;
+}
+.porder {
+  color: black !important;
+  font-size: 17px;
+}
+.sorder1 {
+  padding-left: 250px !important;
+}
+.sorder2 {
+  padding-left: 205px !important;
+}
+.sorder3 {
+  padding-left: 165px !important;
+  color: green;
+  font-weight: 400;
+}
+.sorder4 {
+  padding-left: 225px !important;
+}
+.pay-btn:hover {
+  background: #fb641b;
+}
+.pay-btn:focus {
+  background: #fb641b;
+}
+.pay-btn {
+  background: #fb641b;
+  box-shadow: 0 1px 1px 0 rgb(0 0 0 / 10%);
+  border: none;
+  color: #fff;
+  text-align: center !important;
+  font-size: 17px;
+  margin-left: 180px;
+}
+.horder {
+  margin-bottom: 40px;
+  color: green;
+  font-weight: 500;
 }

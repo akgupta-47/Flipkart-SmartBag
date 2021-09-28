@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Cart.css'
+import './Cart.css';
+import Order from './OrderModal';
 
 const FilledCart = (props) => {
   const products = props.products;
@@ -63,7 +64,8 @@ const FilledCart = (props) => {
                           }}
                         >
                           Add Again
-                        </a> &nbsp;
+                        </a>{' '}
+                        &nbsp;
                         <a id="qty_sign">-</a>
                         <span id="qty_cart">1</span>
                         <a id="qty_sign">+</a>
@@ -75,10 +77,14 @@ const FilledCart = (props) => {
             })}
           </div>
           <div className="porder">
-            <Link to="/cart" class="cart-btn btn modal-trigger" href="#pay">
+            <a class="cart-btn btn modal-trigger" href="#pay">
               Place Order
-            </Link>
-            <OrderModal tprice={tprice} discount={discount} count={products.length}/>
+            </a>
+            <Order
+              tprice={(Math.round(tprice * 100) / 100).toFixed(2)}
+              discount={(Math.round(discount * 100) / 100).toFixed(2)}
+              count={products.length}
+            />
           </div>
         </div>
       </div>
