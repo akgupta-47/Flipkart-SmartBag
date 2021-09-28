@@ -43,7 +43,7 @@ function Products() {
     <div className="products">
       <CartNavbar />
       <div className="row prod_cont">{items}</div>
-      <Footer />
+      <Footer/>
       <MainFooter />
     </div>
   );

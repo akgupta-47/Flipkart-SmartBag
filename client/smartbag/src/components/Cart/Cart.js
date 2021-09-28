@@ -48,7 +48,6 @@ const Cart = () => {
         setProducts={setProducts}
       />
       <Footer />
-      <MainFooter />
     </div>
   );
 };

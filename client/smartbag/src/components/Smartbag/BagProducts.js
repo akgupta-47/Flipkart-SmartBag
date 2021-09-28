@@ -7,8 +7,16 @@ const BagProducts = (props) => {
       <span class="card-title bag-title">My Smartbag</span>
       <div className="row">
         <div className="col s3">
-          {products.map((product) => {
-            // <Product/>
+          {products.map((el) => {
+            <Item
+              name={el.name}
+              image={el.img}
+              rating={el.rating}
+              price={el.price}
+              quantitiy={el.quant}
+              id={el._id}
+              key={i++}
+            />;
           })}
         </div>
       </div>
