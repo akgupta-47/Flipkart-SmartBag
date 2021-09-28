@@ -76,9 +76,10 @@ const FilledCart = (props) => {
             })}
           </div>
           <div className="porder">
-            <Link to="/cart" class="cart-btn btn" href="#pay">
+            <Link to="/cart" class="cart-btn btn modal-trigger" href="#pay">
               Place Order
             </Link>
+            <OrderModal tprice={tprice} discount={discount} count={products.length}/>
           </div>
         </div>
       </div>
