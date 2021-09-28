@@ -15,9 +15,7 @@ exports.viewCart = catchAsync(async (req, res, next) => {
 
   res.status(200).json({
     status: 'success',
-    data: {
-      data: cart,
-    },
+    data: cart,
   });
 });
 

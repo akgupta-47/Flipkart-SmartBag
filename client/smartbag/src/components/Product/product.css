@@ -14,7 +14,6 @@
 .productr {
   padding: 0 80px;
   height: 100%;
-  
 }
 #shareproduct {
   bottom: 45px;
@@ -65,10 +64,11 @@
 }
 
 #pdt_bt {
-  padding: 30px;
+  padding: 20px;
   margin: 0 80px;
   border: none;
 }
 #pdt_bt_head {
   padding: 4px;
+  text-align: start;
 }

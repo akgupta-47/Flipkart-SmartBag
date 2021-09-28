@@ -1,20 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import CartNavbar from '../Cart/CartNavbar';
 import Item from './item';
 import Footer from '../Footer/Footer';
 import MainFooter from '../Footer/MainFooter';
 import axios from 'axios';
+import AuthContext from '../../store/AuthContext';
 
 const baseUrl = 'http://localhost:5000/api/product';
 function Products() {
   const [products, setProducts] = useState([]);
+  const authCtx = useContext(AuthContext);
   useEffect(() => {
     const getProds = async () => {
       const prods = await axios({
         method: 'POST',
         url: `${baseUrl}/search`,
         data: {
-          search: 'malt',
+          search: `${localStorage.getItem('search')}`,
         },
         withCredentials: true,
       });

@@ -1,6 +1,4 @@
-import React, { useContext } from 'react';
-import img from '../../Images/Items/13.png';
-import AuthContext from '../../store/AuthContext';
+import React from 'react';
 import { useHistory } from 'react-router';
 import './product.css';
 
@@ -9,10 +7,9 @@ const defaultImgAdd =
 function Item(props) {
   // const idCtx = useContext(IdContext);
   const history = useHistory();
-  const authCtx = useContext(AuthContext);
   const jab = () => {
-    authCtx.idSetter(props.id);
-    console.log(authCtx.id);
+    // console.log(authCtx.id);
+    localStorage.setItem('prodId', props.id);
     history.push('/product');
   };
   return (
@@ -29,9 +26,10 @@ function Item(props) {
           {props.name}
         </p>
         <p className="black-text" id="item_price">
-          Rs {props.price} &nbsp; <strike className="grey-text">Rs 235</strike>
+          Rs {props.price} &nbsp;{' '}
+          <strike className="grey-text">Rs {props.price + 10}</strike>
           <span className="green-text" id="disc_item">
-            10% off
+            {((10 / props.price) * 100).toFixed(2)}% off
           </span>
         </p>
 

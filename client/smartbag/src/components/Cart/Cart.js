@@ -5,39 +5,38 @@ import './Cart.css';
 import Footer from '../Footer/Footer';
 import MainFooter from '../Footer/MainFooter';
 import CartContext from '../../store/CartContext';
+import axios from 'axios';
 
+const baseUrl = 'http://localhost:5000/api/cart';
 const Cart = () => {
   const cartCtx = useContext(CartContext);
-  const [products, setProducts] = useState([
-    {
-      name: 'Puma Shoes',
-      id: 'hshsshshshsh',
-      description: 'Size: 6, Color: Black, Seller: SuriIndustries',
-      price: 299,
-      discount: '20 %',
-      image:
-        'https://rukminim1.flixcart.com/image/224/224/kj61gnk0-0/shoe/g/k/9/new-0124-black-37-sppif-black-original-imafysvf2vu4zfyk.jpeg?q=90',
-    },
-    {
-      name: 'Adidas Shoes',
-      id: 'hdhdhdhdhd',
-      description: 'Size: 6, Color: Black, Seller: SuriIndustries',
-      price: 599,
-      discount: '10 %',
-      image:
-        'https://rukminim1.flixcart.com/image/224/224/kovsvbk0/slipper-flip-flop/m/c/i/10-11420886-puma-white-original-imag38zzyehqpk6r.jpeg?q=90',
-    },
-  ]);
+  const [products, setProducts] = useState([]);
+
   useEffect(() => {
-    products.map((el) => {
-      cartCtx.addItem(el);
-      return {};
-    });
+    const carty = async () => {
+      const prods = await axios({
+        method: 'GET',
+        url: `${baseUrl}`,
+        withCredentials: true,
+      });
+      let pros = [];
+      for (let i = 0; i < prods.data.data[0].prods.length; i++) {
+        let temp = {
+          image: prods.data.data[0].prods[i].prod.img,
+          brand: prods.data.data[0].prods[i].prod.brand,
+          name: prods.data.data[0].prods[i].prod.name,
+          price: prods.data.data[0].prods[i].prod.price,
+          quantity: prods.data.data[0].prods[i].quant,
+          discount: '20%',
+        };
+        pros.push(temp);
+        cartCtx.addItem(temp);
+      }
+      setProducts(pros);
+    };
+    carty();
   }, []);
-  // console.log('somebro');
-  // const addToCartHandler = () => {
-  //     cartCtx.addItem()
-  // }
+
   console.log(cartCtx.items);
   return (
     <div className="cart">
@@ -47,7 +46,6 @@ const Cart = () => {
         isEmpty={false}
         products={products}
         setProducts={setProducts}
-        
       />
       <Footer />
       <MainFooter />
