@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import OrderModal from './OrderModal';
 import './Cart.css';
 import Order from './OrderModal';
 
