@@ -253,3 +253,13 @@ h6 {
 .CartNavbar {
   overflow: hidden;
 }
+
+#qty_cart {
+  padding-left: 0 !important;
+  padding-right: 20px;
+}
+
+#qty_sign{
+  font-weight: 700;
+  /* font-size: 12px!important; */
+}

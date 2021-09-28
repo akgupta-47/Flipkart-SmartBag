@@ -37,9 +37,9 @@ function App() {
             {authCtx.isLoggedIn && <Smartbag />}
             {authCtx.isLoggedIn && <Redirect to="/" />}
           </Route>
-          <Route path="/cart">
-            {authCtx.isLoggedIn && <Cart />}
-            {!authCtx.isLoggedIn && <Redirect to="/" />}
+          <Route path="/cart" component={Cart}>
+            {/* {authCtx.isLoggedIn && <Cart />}
+            {!authCtx.isLoggedIn && <Redirect to="/" />} */}
           </Route>
           <Route path="/products" component={Products} />
           <Route path="/product" component={Product} />
