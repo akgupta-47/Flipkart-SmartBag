@@ -54,7 +54,6 @@ exports.getOne = (Model, popOptions) =>
     let query = Model.findById(req.params.id);
     if (popOptions) query = query.populate(popOptions);
     const doc = await query;
-
     // const tour = await Tour.findById(req.params.id).populate('reviews');
     // Tour.findOne({_id: req.params.id}); will work the same
 
@@ -64,9 +63,7 @@ exports.getOne = (Model, popOptions) =>
 
     res.status(200).json({
       status: 'success',
-      data: {
-        data: doc,
-      },
+      data: doc,
     });
   });
 

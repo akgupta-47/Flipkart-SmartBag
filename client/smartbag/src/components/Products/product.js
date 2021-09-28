@@ -1,25 +1,48 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import CartNavbar from '../Cart/CartNavbar';
 import Item from './item';
 import Footer from '../Footer/Footer';
+import MainFooter from '../Footer/MainFooter';
+import axios from 'axios';
+
+const baseUrl = 'http://localhost:5000/api/product';
 function Products() {
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    const getProds = async () => {
+      const prods = await axios({
+        method: 'POST',
+        url: `${baseUrl}/search`,
+        data: {
+          search: 'malt',
+        },
+        withCredentials: true,
+      });
+      setProducts(prods.data.data.data);
+    };
+    getProds();
+  }, []);
+
+  let i = 0;
+  const items = products.map((el) => {
+    return (
+      <Item
+        name={el.name}
+        image={el.img}
+        rating={el.rating}
+        price={el.price}
+        quantitiy={el.quant}
+        id={el._id}
+        key={i++}
+      />
+    );
+  });
   return (
     <div className="products">
       <CartNavbar />
-      <div className="row prod_cont">
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-          </div>
-        <Footer />
+      <div className="row prod_cont">{items}</div>
+      <Footer />
+      <MainFooter />
     </div>
   );
 }

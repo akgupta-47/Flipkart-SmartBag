@@ -42,6 +42,14 @@ const createSignToken = (user, statusCode, res) => {
   });
 };
 
+exports.getCookie = (req, res) => {
+  const cookie = req.cookies.jwt;
+  res.status(200).json({
+    status: 'success',
+    data: cookie,
+  });
+};
+
 exports.confirmSignup = catchAsync(async (req, res, next) => {
   const { token } = req.params;
 
@@ -71,7 +79,7 @@ exports.signUp = catchAsync(async (req, res, next) => {
     phone: req.body.phone,
   });
 
-  console.log('i reached here');
+  // console.log('i reached here');
   const token = signToken(newUser._id);
   // console.log(token);
 
@@ -116,10 +124,7 @@ exports.login = catchAsync(async (req, res, next) => {
 // a clever way to overWrite the cookie with some dummy text so
 // it does not know which user to log in
 exports.logout = (req, res) => {
-  res.cookie('jwt', 'GuessWhatYouJustGotLoggedOut', {
-    expires: new Date(Date.now() + 10 * 1000),
-    httpOnly: true,
-  });
+  res.clearCookie('jwt');
   res.status(200).json({ status: 'success' });
 };
 
@@ -127,14 +132,16 @@ exports.logout = (req, res) => {
 exports.protect = catchAsync(async (req, res, next) => {
   // getting token and check if it is theres
   let token;
+
+  // console.log(req.cookies);
   if (
     req.headers.authorization &&
     req.headers.authorization.startsWith('Bearer')
   ) {
     token = req.headers.authorization.split(' ')[1];
     //console.log(token);
-  } else if (req.cookie.jwt) {
-    token = req.jwt.cookie;
+  } else if (req.cookies.jwt) {
+    token = req.cookies.jwt;
   }
   if (!token) {
     return next(

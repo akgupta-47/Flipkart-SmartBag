@@ -1,5 +1,6 @@
 /* global $ */
 import React, { useState, useContext } from 'react';
+import Swal from 'sweetalert2';
 import axios from 'axios';
 import './Login.css';
 import 'materialize-css/dist/css/materialize.min.css';
@@ -38,6 +39,12 @@ const Login = () => {
       authCtx.login(res.data.token);
     } catch (err) {
       console.log(err);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong! Check your email and password',
+        footer: 'Try loggin in again!!',
+      });
     }
     setCredentials({ user: '', password: '' });
     setIsLogin(false);
@@ -61,6 +68,12 @@ const Login = () => {
       console.log(ax);
     } catch (err) {
       console.log(err);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong! Check your Input data',
+        footer: 'Try loggin in again!!',
+      });
     }
     setNewCredentials({
       name: '',

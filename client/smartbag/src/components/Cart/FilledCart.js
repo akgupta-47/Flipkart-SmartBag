@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import OrderModal from './OrderModal'
+import './Cart.css'
 
 const FilledCart = (props) => {
   const products = props.products;
@@ -55,6 +55,18 @@ const FilledCart = (props) => {
                         >
                           Remove from Cart
                         </a>
+                        <a
+                          className="acart"
+                          href="#"
+                          onClick={() => {
+                            handleRemove(product.id);
+                          }}
+                        >
+                          Add Again
+                        </a> &nbsp;
+                        <a id="qty_sign">-</a>
+                        <span id="qty_cart">1</span>
+                        <a id="qty_sign">+</a>
                       </div>
                     </div>
                   </div>

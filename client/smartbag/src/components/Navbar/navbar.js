@@ -11,6 +11,10 @@ import Img5 from '../../Images/navbar/5.jpg';
 import Img6 from '../../Images/navbar/6.jpg';
 import Img7 from '../../Images/navbar/7.png';
 import AuthContext from '../../store/AuthContext';
+import axios from 'axios';
+import Swal from 'sweetalert2';
+
+const baseUrl = 'http://localhost:5000/api/users';
 
 function Navbar() {
   const [search, setSearch] = useState('');
@@ -20,6 +24,26 @@ function Navbar() {
   };
   const authCtx = useContext(AuthContext);
   const isLoggedIn = authCtx.isLoggedIn;
+
+  const logoutHandler = async () => {
+    try {
+      await axios({
+        method: 'GET',
+        url: `${baseUrl}/logout`,
+        data: {},
+        withCredentials: true,
+      });
+      authCtx.logout();
+    } catch (err) {
+      console.log(err);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong while loggin user out!',
+        footer: 'Try loggin in again!!',
+      });
+    }
+  };
 
   return (
     <div classNameName="navbar center">
@@ -37,7 +61,7 @@ function Navbar() {
       </ul>
 
       <nav className="nav-extended  ">
-        <div className="nav-wrapper valign-wrapper">
+        <div className="nav-wrapper valign-wrapper center">
           <a href="#!" className="heading ">
             <i>Grocery</i>
           </a>
@@ -85,7 +109,7 @@ function Navbar() {
                   <a
                     class="lbtn btn modal-trigger"
                     href="#login"
-                    onClick={() => authCtx.logout()}
+                    onClick={logoutHandler}
                   >
                     LOGOUT
                   </a>

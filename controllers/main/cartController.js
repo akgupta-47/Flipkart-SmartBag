@@ -4,7 +4,10 @@ const AppError = require('../../utils/appError');
 const Cart = require('../../models/cartModel');
 
 exports.viewCart = catchAsync(async (req, res, next) => {
-  const cart = await Cart.find({ user: req.user._id });
+  const cart = await Cart.find({ user: req.user._id }).populate({
+    path: 'prods',
+    populate: { path: 'prod' },
+  });
 
   if (!cart) {
     return next(new AppError('No items in cart', 404));

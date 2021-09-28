@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import Login from '../Login/Login';
+import AuthContext from '../../store/AuthContext';
 import './Cart.css';
 
 const CartNavbar = (props) => {
   const [search, setSearch] = useState('');
-  const links = props.islogged ? (
+  const authCtx = useContext(AuthContext);
+
+  const links = authCtx.isLoggedIn ? (
     <div className="logout">
       <a className="lbtn btn" href="#logout">
         Log out
@@ -13,10 +15,9 @@ const CartNavbar = (props) => {
     </div>
   ) : (
     <div className="login">
-      <a class="lbtn btn modal-trigger" href="#login">
+      <a class="lbtn btn modal-trigger" href="/">
         LOGIN
       </a>
-      <Login />
     </div>
   );
   const handleSearch = (e) => {

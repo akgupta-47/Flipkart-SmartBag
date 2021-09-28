@@ -1,0 +1,74 @@
+.productpg {
+  padding: 0 100px;
+}
+
+#prod_cont {
+  height: 500px;
+  border: solid 1px #878787;
+  padding: 30px;
+  width: 100%;
+}
+#product_fimg {
+  width: 1540px;
+}
+.productr {
+  padding: 0 80px;
+  height: 100%;
+  
+}
+#shareproduct {
+  bottom: 45px;
+  position: relative;
+}
+#shareproduct i {
+  position: relative;
+  top: 6px !important;
+}
+#pr_price {
+  font-size: 28px !important;
+}
+#pr_price span strike {
+  font-size: 20px !important;
+}
+#pr_price span {
+  padding-left: 10px !important ;
+  font-size: 20px;
+}
+#prod_disc {
+  padding-left: 0px !important;
+}
+#padding_zero {
+  font-size: small;
+  font-weight: 200 !important;
+  padding-left: 12px !important;
+}
+#padding_zero i {
+  top: 2px;
+  position: relative;
+}
+#padding_zero1 {
+  padding-left: 22px !important;
+  font-size: large;
+}
+.listprod {
+  list-style-type: circle !important;
+}
+#padding_zero2 {
+  top: 20px !important   ;
+  position: relative;
+  background-color: #0c73eb;
+}
+#prod_table {
+  left: 20px !important;
+  position: relative;
+  /* border: solid 2px #878787; */
+}
+
+#pdt_bt {
+  padding: 30px;
+  margin: 0 80px;
+  border: none;
+}
+#pdt_bt_head {
+  padding: 4px;
+}

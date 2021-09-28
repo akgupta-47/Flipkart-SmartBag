@@ -43,11 +43,11 @@ const limiter = rateLimit({
   windowMs: 60 * 60 * 1000,
   message: 'Whoa!! too many requests, try again in 1 hour',
 });
-app.use('/appname', limiter);
+app.use('/api', limiter);
 
+app.use(cookieParser());
 app.use(express.json({ limit: '10kb' }));
 app.use(express.urlencoded({ extended: true, limit: '10kb' }));
-app.use(cookieParser());
 
 // mongo data sanitization to prevent querry injection
 app.use(mongoSanitize());
