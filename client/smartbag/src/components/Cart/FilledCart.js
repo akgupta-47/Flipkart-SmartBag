@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import OrderModal from './OrderModal';
 import './Cart.css';
 
 const FilledCart = (props) => {
@@ -79,7 +80,11 @@ const FilledCart = (props) => {
             <Link to="/cart" class="cart-btn btn modal-trigger" href="#pay">
               Place Order
             </Link>
-            <OrderModal tprice={tprice} discount={discount} count={products.length}/>
+            <OrderModal
+              tprice={tprice}
+              discount={discount}
+              count={products.length}
+            />
           </div>
         </div>
       </div>
