@@ -1,13 +1,15 @@
 import React from 'react';
-
+import Item from '../Products/item';
 const BagProducts = (props) => {
   const products = props.bagProd;
+  let i = 0
   return (
     <div className="card pagecard">
       <span class="card-title bag-title">My Smartbag</span>
       <div className="row">
         <div className="col s3">
-          {products.map((el) => {
+          {
+          products.map((el) => {
             <Item
               name={el.name}
               image={el.img}
