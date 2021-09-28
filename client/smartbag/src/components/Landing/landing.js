@@ -62,7 +62,6 @@ function Landing() {
 
         </div> */}
       </div>
-      <Footer1 />
 
       <MainFooter />
     </div>
