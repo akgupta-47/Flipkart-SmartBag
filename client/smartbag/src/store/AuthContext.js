@@ -5,13 +5,13 @@ const AuthContext = React.createContext({
   isLoggedIn: false,
   login: (token) => {},
   logout: () => {},
-  id: '',
-  idSetter: (id) => {},
+  search: '',
+  callSearch: (search) => {},
 });
 
 export const AuthContextProvider = (props) => {
   const [token, setToken] = useState(null);
-  const [prodId, setProdId] = useState('');
+  const [search, setSearch] = useState('');
   const userLoggedIn = !!token;
 
   const loginHandler = (token) => {
@@ -20,17 +20,18 @@ export const AuthContextProvider = (props) => {
   const logoutHandler = () => {
     setToken(null);
   };
-  const idHandler = (id) => {
-    setProdId(id);
+
+  const Searcher = (term) => {
+    setSearch(term);
   };
 
   const contextValue = {
-    id: prodId,
-    idSetter: idHandler,
     token,
     isLoggedIn: userLoggedIn,
     login: loginHandler,
     logout: logoutHandler,
+    search,
+    callSearch: Searcher,
   };
   return (
     <AuthContext.Provider value={contextValue}>

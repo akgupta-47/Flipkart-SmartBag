@@ -1,15 +1,16 @@
 import React, { useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import AuthContext from '../../store/AuthContext';
 import './Cart.css';
 
 const CartNavbar = (props) => {
   const [search, setSearch] = useState('');
+  const history = useHistory();
   const authCtx = useContext(AuthContext);
 
   const links = authCtx.isLoggedIn ? (
     <div className="logout">
-      <a className="lbtn btn" href="#logout">
+      <a className="lbtn btn" href="/">
         Log out
       </a>
     </div>
@@ -21,14 +22,19 @@ const CartNavbar = (props) => {
     </div>
   );
   const handleSearch = (e) => {
-    console.log(search);
+    localStorage.setItem('search', search);
+    if (!window.location.href.includes('products')) {
+      history.replace('/products');
+    } else {
+      history.go(0);
+    }
     setSearch('');
   };
   return (
     <div className="CartNavbar">
       <nav>
         <div class="nav-wrapper">
-          <a href="#!" className="heading1">
+          <a href="/" className="heading1">
             <i className="heading1">Grocery</i>
           </a>
           <div class="input-field searchbar">
@@ -56,6 +62,7 @@ const CartNavbar = (props) => {
               Home
             </Link>
           </div>
+
           {links}
         </div>
       </nav>

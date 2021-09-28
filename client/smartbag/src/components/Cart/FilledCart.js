@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Cart.css'
+import './Cart.css';
 
 const FilledCart = (props) => {
   const products = props.products;
@@ -36,7 +36,7 @@ const FilledCart = (props) => {
                       <div class="card-content pcon">
                         <h5>{product.name}</h5>
                         <br />
-                        <p className="cp">{product.description}</p>
+                        <p className="cp">{product.brand}</p>
                         <br />
                         <h5>
                           ₹ {product.price}{' '}
@@ -63,9 +63,10 @@ const FilledCart = (props) => {
                           }}
                         >
                           Add Again
-                        </a> &nbsp;
+                        </a>{' '}
+                        &nbsp;
                         <a id="qty_sign">-</a>
-                        <span id="qty_cart">1</span>
+                        <span id="qty_cart">{product.quantity}</span>
                         <a id="qty_sign">+</a>
                       </div>
                     </div>

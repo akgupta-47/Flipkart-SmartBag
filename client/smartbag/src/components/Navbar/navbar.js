@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import './navbar.css';
 import 'materialize-css/dist/css/materialize.min.css';
 import Login from '../Login/Login';
@@ -18,11 +18,15 @@ const baseUrl = 'http://localhost:5000/api/users';
 
 function Navbar() {
   const [search, setSearch] = useState('');
+  const history = useHistory();
+  const authCtx = useContext(AuthContext);
+
   const handleSearch = (e) => {
-    console.log(search);
+    localStorage.setItem('search', search);
+    // authCtx.callSearch(search);
+    history.push('/products');
     setSearch('');
   };
-  const authCtx = useContext(AuthContext);
   const isLoggedIn = authCtx.isLoggedIn;
 
   const logoutHandler = async () => {
@@ -62,7 +66,7 @@ function Navbar() {
 
       <nav className="nav-extended  ">
         <div className="nav-wrapper valign-wrapper center">
-          <a href="#!" className="heading ">
+          <a href="/" className="heading ">
             <i>Grocery</i>
           </a>
           <ul className=" hide-on-med-and-down">
@@ -78,7 +82,10 @@ function Navbar() {
                   }}
                   required
                 />
-                <i className="material-icons right icon_srch valign-wrapper">
+                <i
+                  className="material-icons right icon_srch valign-wrapper"
+                  onClick={handleSearch}
+                >
                   search
                 </i>
               </div>
