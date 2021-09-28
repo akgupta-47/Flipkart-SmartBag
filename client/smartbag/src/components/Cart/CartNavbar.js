@@ -57,10 +57,25 @@ const CartNavbar = (props) => {
               search
             </i>
           </div>
-          <div className="righthome">
-            <Link to="/" href="#home">
-              Home
-            </Link>
+          <div className="navright">
+            <ul className="righthome">
+              <li>
+                {' '}
+                <Link to="/" href="#home">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link to="/bag" href="#">
+                  Smartbag<i class="material-icons right">star</i>
+                </Link>
+              </li>
+              <li>
+                <Link to="/cart" href="#">
+                  My Cart <i class="material-icons right">shopping_cart</i>
+                </Link>
+              </li>
+            </ul>
           </div>
 
           {links}

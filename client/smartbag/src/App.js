@@ -33,9 +33,9 @@ function App() {
           <Route path="/" exact component={Landing} />
           {/* <Route path="/home" component={Landing} />  */}
 
-          <Route path="/bag">
-            {authCtx.isLoggedIn && <Smartbag />}
-            {authCtx.isLoggedIn && <Redirect to="/" />}
+          <Route path="/bag" component={Smartbag}>
+            {/* {authCtx.isLoggedIn && <Smartbag />}
+            {authCtx.isLoggedIn && <Redirect to="/" />} */}
           </Route>
           <Route path="/cart" component={Cart}>
             {/* {authCtx.isLoggedIn && <Cart />}
