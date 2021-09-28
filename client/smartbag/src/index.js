@@ -5,12 +5,15 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'materialize-css/dist/css/materialize.min.css';
 import { AuthContextProvider } from './store/AuthContext';
+import CartProvider from './store/CartProvider';
 
 ReactDOM.render(
   <AuthContextProvider>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+    <CartProvider>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </CartProvider>
   </AuthContextProvider>,
   document.getElementById('root')
 );

@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import CartNavbar from './CartNavbar';
 import CartDetails from './CartDetails';
 import './Cart.css';
 import Footer from '../Footer/Footer';
 import MainFooter from '../Footer/MainFooter';
+import CartContext from '../../store/CartContext';
 
 const Cart = () => {
+  const cartCtx = useContext(CartContext);
   const [products, setProducts] = useState([
     {
       name: 'Puma Shoes',
@@ -26,6 +28,17 @@ const Cart = () => {
         'https://rukminim1.flixcart.com/image/224/224/kovsvbk0/slipper-flip-flop/m/c/i/10-11420886-puma-white-original-imag38zzyehqpk6r.jpeg?q=90',
     },
   ]);
+  useEffect(() => {
+    products.map((el) => {
+      cartCtx.addItem(el);
+      return {};
+    });
+  }, []);
+  // console.log('somebro');
+  // const addToCartHandler = () => {
+  //     cartCtx.addItem()
+  // }
+  console.log(cartCtx.items);
   return (
     <div className="cart">
       <CartNavbar islogged={true} />

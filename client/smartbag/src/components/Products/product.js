@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import CartNavbar from '../Cart/CartNavbar';
 import Item from './item';
 import Footer from '../Footer/Footer';
+import MainFooter from '../Footer/MainFooter';
 import axios from 'axios';
 
 const baseUrl = 'http://localhost:5000/api/product';
@@ -17,40 +18,31 @@ function Products() {
         },
         withCredentials: true,
       });
-      const prodArray = [];
-      for (let i = 0; i < prods.data.data.length; i++) {
-        prodArray.push({
-          name: prods.data.data[i].name,
-          img: prods.data.data[i].img,
-          price: prods.data.data[i].price,
-          rating: prods.data.data[i].rating,
-          id: prods.data.data[i]._id,
-          quant: prods.data.data[i].quant,
-        });
-      }
-      console.log(prods.data.data);
-      setProducts(prodArray);
+      setProducts(prods.data.data.data);
     };
     getProds();
   }, []);
-  console.log(products);
+
+  let i = 0;
+  const items = products.map((el) => {
+    return (
+      <Item
+        name={el.name}
+        image={el.img}
+        rating={el.rating}
+        price={el.price}
+        quantitiy={el.quant}
+        id={el._id}
+        key={i++}
+      />
+    );
+  });
   return (
     <div className="products">
       <CartNavbar />
-      <div className="row prod_cont">
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-      </div>
+      <div className="row prod_cont">{items}</div>
       <Footer />
+      <MainFooter />
     </div>
   );
 }

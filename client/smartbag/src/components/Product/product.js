@@ -1,10 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Header from '../Cart/CartNavbar';
 import './product.css';
 import img from '../../Images/Product/12.png';
 import img2 from '../../Images/Product/13.png';
 import Footer from '../Footer/MainFooter';
+import axios from 'axios';
+import AuthContext from '../../store/AuthContext';
+
+const baseUrl = 'http://localhost:5000/api/product';
 function Product() {
+  const [product, setProduct] = useState({});
+  const authCtx = useContext(AuthContext);
+  useEffect(() => {
+    const getProd = async () => {
+      const prod = await axios({
+        method: 'GET',
+        url: `${baseUrl}/${authCtx.id}`,
+        withCredentials: true,
+      });
+      setProduct(prod.data.data);
+    };
+    getProd();
+  }, [authCtx.id]);
+  console.log(product);
   return (
     <div className="product">
       <Header />
@@ -13,7 +31,7 @@ function Product() {
         <div className="row productr ">
           <div className="col l3 m12 s12">
             <div className="container white " id="prod_cont">
-              <img src={img2} className="responsive-img" />
+              <img src={product.img} className="responsive-img" />
             </div>
             <a className="btn center" id="padding_zero2">
               {' '}
@@ -21,16 +39,14 @@ function Product() {
             </a>
           </div>
           <div className="col l8 m12 s12 ">
-            <p className="black-text">
-              NYCIL Soothing Body Mist Antibacterial (100 ml)
-            </p>
+            <p className="black-text">{product.name}</p>
             <div className=" right hide-on-med-and-down" id="shareproduct">
               <span className="grey-text right">
                 Share<i className="material-icons ">share</i>
               </span>
             </div>
             <p className="black-text" id="pr_price">
-              Rs 99
+              Rs {product.price}
               <span className="grey-text">
                 <strike>Rs 150</strike>
               </span>
@@ -73,30 +89,30 @@ function Product() {
               <thead>
                 <tr>
                   <th>Category</th>
-                  <td>Shampoos</td>
+                  <td>{product.categ}</td>
                 </tr>
               </thead>
 
               <tbody>
                 <tr>
                   <th>Rating</th>
-                  <td>4.3/5</td>
+                  <td>{product.rating}/5</td>
                 </tr>
                 <tr>
                   <th>Quantity</th>
-                  <td>2kg</td>
+                  <td>{product.quant}kg</td>
                 </tr>
                 <tr>
                   <th>Brand</th>
-                  <td>Nycil</td>
+                  <td>{product.brand}</td>
                 </tr>
                 <tr>
                   <th>Container Type</th>
-                  <td>Plastic</td>
+                  <td>{product.contType}</td>
                 </tr>
                 <tr>
                   <th>Expiry</th>
-                  <td>2 years</td>
+                  <td>{product.exp} years</td>
                 </tr>
               </tbody>
             </table>
