@@ -1,12 +1,12 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import OrderModal from './OrderModal';
+import React, { useContext } from 'react';
 import './Cart.css';
 import Order from './OrderModal';
+import CartContext from '../../store/CartContext';
 
 const FilledCart = (props) => {
-  const products = props.products;
-  let tprice = 0;
+  const prodCtx = useContext(CartContext);
+  const products = prodCtx.items;
+  let tprice = prodCtx.totalAmount;
   let discount = 0;
   const handleRemove = (key) => {
     let products = props.products;
@@ -16,6 +16,7 @@ const FilledCart = (props) => {
     props.setProducts(products);
     if (!products) props.isEmpty = true;
   };
+
   return (
     <div className="row">
       <div className="col s8">
@@ -24,12 +25,11 @@ const FilledCart = (props) => {
           <br />
           <div className="fcart">
             {products.map((product) => {
-              tprice = tprice + product.price;
               discount =
                 discount +
                 (product.discount.split('%')[0] * product.price) / 100;
               return (
-                <div className="card acard">
+                <div className="card acard" key={product.name}>
                   <div class="card pcard horizontal">
                     <div class="card-image">
                       <img src={product.image} />
@@ -61,7 +61,7 @@ const FilledCart = (props) => {
                           className="acart"
                           href="#"
                           onClick={() => {
-                            handleRemove(product.id);
+                            prodCtx.addItem(product);
                           }}
                         >
                           Add Again
@@ -84,7 +84,9 @@ const FilledCart = (props) => {
             <Order
               tprice={(Math.round(tprice * 100) / 100).toFixed(2)}
               discount={(Math.round(discount * 100) / 100).toFixed(2)}
-              count={products.length}
+              count={prodCtx.items.reduce((curNumber, item) => {
+                return curNumber + item.quantity;
+              }, 0)}
             />
           </div>
         </div>

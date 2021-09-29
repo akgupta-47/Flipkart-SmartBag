@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import CartNavbar from './CartNavbar';
 import CartDetails from './CartDetails';
 import './Cart.css';
@@ -10,7 +10,6 @@ import axios from 'axios';
 const baseUrl = 'http://localhost:5000/api/cart';
 const Cart = () => {
   const cartCtx = useContext(CartContext);
-  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     const carty = async () => {
@@ -32,21 +31,14 @@ const Cart = () => {
         pros.push(temp);
         cartCtx.addItem(temp);
       }
-      setProducts(pros);
     };
     carty();
   }, []);
 
-  console.log(cartCtx.items);
   return (
     <div className="cart">
       <CartNavbar islogged={true} />
-      <CartDetails
-        islogged={true}
-        isEmpty={false}
-        products={products}
-        setProducts={setProducts}
-      />
+      <CartDetails islogged={true} isEmpty={false} />
       <Footer />
       <MainFooter />
     </div>

@@ -5,11 +5,7 @@ const LoggedinCart = (props) => {
   const links = props.isEmpty ? (
     <EmptyCart />
   ) : (
-    <FilledCart
-      isEmpty={props.isEmpty}
-      products={props.products}
-      setProducts={props.setProducts}
-    />
+    <FilledCart isEmpty={props.isEmpty} />
   );
   return <div className="lincart">{links}</div>;
 };

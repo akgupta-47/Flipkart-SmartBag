@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router';
+import CartContext from '../../store/CartContext';
 import './product.css';
 
 const defaultImgAdd =
@@ -12,6 +13,8 @@ function Item(props) {
     localStorage.setItem('prodId', props.id);
     history.push('/product');
   };
+  const cartCtx = useContext(CartContext);
+
   return (
     <div className="item">
       <div className="card col auto z-depth-1" id="item_card">
@@ -36,7 +39,19 @@ function Item(props) {
         <div className="divider"></div>
         <div className="card-action ">
           <a onClick={jab}>View product</a>
-          <a href="#" className="right">
+          <a
+            href="#"
+            className="right"
+            onClick={() =>
+              cartCtx.addItem({
+                image: props.image,
+                price: props.price,
+                name: props.name,
+                brand: props.brand,
+                discount: '20%',
+              })
+            }
+          >
             {' '}
             Add to cart
           </a>

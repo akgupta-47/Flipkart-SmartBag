@@ -1,16 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Header from '../Cart/CartNavbar';
 import './product.css';
 import img from '../../Images/Product/12.png';
 import Footer from '../Footer/MainFooter';
 import Item from './item';
 import axios from 'axios';
+import CartContext from '../../store/CartContext';
 
 const defaultImgAdd =
   'https://redzonekickboxing.com/wp-content/uploads/2017/04/default-image.jpg';
 const baseUrl = 'http://localhost:5000/api/product';
 function Product() {
   const [product, setProduct] = useState({});
+  const cartCtx = useContext(CartContext);
   useEffect(() => {
     const getProd = async () => {
       const prod = await axios({
@@ -36,7 +38,19 @@ function Product() {
                 className="responsive-img"
               />
             </div>
-            <a className="btn center" id="padding_zero2">
+            <a
+              className="btn center"
+              id="padding_zero2"
+              onClick={() =>
+                cartCtx.addItem({
+                  image: product.image,
+                  price: product.price,
+                  name: product.name,
+                  brand: product.brand,
+                  discount: '20%',
+                })
+              }
+            >
               {' '}
               Add to cart
             </a>
