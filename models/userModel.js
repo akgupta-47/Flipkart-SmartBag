@@ -24,6 +24,11 @@ const userSchema = new mongoose.Schema({
     default:
       'https://res.cloudinary.com/flyingbing/image/upload/v1631215449/defaultImage_mmxazq.png',
   },
+  idd: {
+    type: String,
+    unique: true,
+    required: true,
+  },
   password: {
     type: String,
     required: [true, 'Please enter a password'],

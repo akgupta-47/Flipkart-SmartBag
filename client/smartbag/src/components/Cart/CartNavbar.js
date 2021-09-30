@@ -67,7 +67,7 @@ const CartNavbar = (props) => {
               </li>
               <li>
                 <Link to="/bag" href="#">
-                  Smartbag<i class="material-icons right">star</i>
+                  Smartbag<i class="material-icons right">shopping_basket</i>
                 </Link>
               </li>
               <li>

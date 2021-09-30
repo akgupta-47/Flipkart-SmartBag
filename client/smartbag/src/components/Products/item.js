@@ -48,6 +48,7 @@ function Item(props) {
                 price: props.price,
                 name: props.name,
                 brand: props.brand,
+                id: props.id,
                 discount: '20%',
               })
             }

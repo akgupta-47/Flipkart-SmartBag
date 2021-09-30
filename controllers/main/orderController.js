@@ -106,7 +106,7 @@ exports.getMyOrdersCsv = catchAsync(async (req, res, next) => {
   for (i = 0; i < orders.length; i += 1) {
     for (j = 0; j < orders[i].prods.length; j += 1) {
       const mukesh = {
-        user: req.user._id,
+        user: req.user.idd,
         odtime: orders[i].odtime,
         product: orders[i].prods[j].prod,
         quantity: orders[i].prods[j].quant,

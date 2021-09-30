@@ -10,15 +10,18 @@ import axios from 'axios';
 const baseUrl = 'http://localhost:5000/api/cart';
 const Cart = () => {
   const cartCtx = useContext(CartContext);
-
+  console.log('12345');
   useEffect(() => {
+    console.log('1234');
     const carty = async () => {
+      console.log('123');
       const prods = await axios({
         method: 'GET',
         url: `${baseUrl}`,
         withCredentials: true,
       });
       let pros = [];
+      console.log('some', prods);
       for (let i = 0; i < prods.data.data[0].prods.length; i++) {
         let temp = {
           image: prods.data.data[0].prods[i].prod.img,
@@ -26,6 +29,7 @@ const Cart = () => {
           name: prods.data.data[0].prods[i].prod.name,
           price: prods.data.data[0].prods[i].prod.price,
           quantity: prods.data.data[0].prods[i].quant,
+          id: prods.data.data[0].prods[i].prod._id,
           discount: '20%',
         };
         pros.push(temp);

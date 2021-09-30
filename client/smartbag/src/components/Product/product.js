@@ -47,6 +47,7 @@ function Product() {
                   price: product.price,
                   name: product.name,
                   brand: product.brand,
+                  id: product._id,
                   discount: '20%',
                 })
               }

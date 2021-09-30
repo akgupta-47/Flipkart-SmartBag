@@ -2,6 +2,7 @@
 const catchAsync = require('../../utils/catchAsync');
 const AppError = require('../../utils/appError');
 const Cart = require('../../models/cartModel');
+const Product = require('../../models/productModel');
 
 exports.viewCart = catchAsync(async (req, res, next) => {
   const cart = await Cart.find({ user: req.user._id }).populate({
@@ -21,13 +22,14 @@ exports.viewCart = catchAsync(async (req, res, next) => {
 
 exports.addToCart = catchAsync(async (req, res, next) => {
   let cart = await Cart.find({ user: req.user._id });
+  const product = await Product.find({ _id: req.params.id });
 
   if (cart.length === 0) {
     // if no product in the cart then create new cart
     cart = await Cart.create({
       total: 1,
       user: req.user._id,
-      amnt: req.body.amount,
+      amnt: product[0].price,
       prods: [
         {
           quant: 1,
@@ -39,7 +41,7 @@ exports.addToCart = catchAsync(async (req, res, next) => {
     // increment the total products
     cart[0].total += 1;
     // increment the checout amount
-    cart[0].amnt += +req.body.amount;
+    cart[0].amnt += +product[0].price;
     let ind = -1;
 
     // find if product is already in cart or not
