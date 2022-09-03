@@ -31,12 +31,12 @@ function Navbar() {
 
   const logoutHandler = async () => {
     try {
-      await axios({
-        method: 'GET',
-        url: `${baseUrl}/logout`,
-        data: {},
-        withCredentials: true,
-      });
+      // await axios({
+      //   method: 'GET',
+      //   url: `${baseUrl}/logout`,
+      //   data: {},
+      //   withCredentials: true,
+      // });
       authCtx.logout();
     } catch (err) {
       console.log(err);

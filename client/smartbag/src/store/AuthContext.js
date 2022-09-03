@@ -10,7 +10,7 @@ const AuthContext = React.createContext({
 });
 
 export const AuthContextProvider = (props) => {
-  const [token, setToken] = useState(null);
+  const [token, setToken] = useState('random-token');
   const [search, setSearch] = useState('');
   const userLoggedIn = !!token;
 

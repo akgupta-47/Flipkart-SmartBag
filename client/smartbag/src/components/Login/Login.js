@@ -25,18 +25,21 @@ const Login = () => {
     e.preventDefault();
     // alert(credentials.user);
     // alert(credentials.password);
+    authCtx.isLoggedIn = true;
     try {
-      const res = await axios({
-        method: 'POST',
-        url: `${baseUrl}/login`,
-        data: {
-          email: credentials.user,
-          password: credentials.password,
-        },
-        withCredentials: true,
-      });
-      console.log(res.data.token);
-      authCtx.login(res.data.token);
+      // const res = await axios({
+      //   method: 'POST',
+      //   url: `${baseUrl}/login`,
+      //   data: {
+      //     email: credentials.user,
+      //     password: credentials.password,
+      //   },
+      //   withCredentials: true,
+      // });
+      // console.log(res.data.token);
+      // authCtx.login(res.data.token);
+      // line was changed here for deployment purposes only
+      authCtx.login('random-token');
     } catch (err) {
       console.log(err);
       Swal.fire({
@@ -100,7 +103,9 @@ const Login = () => {
             <div className="row">
               <div className="col left-col s5">
                 <h4>Login</h4>
-                <p className="plogin">Get access to your Orders, Wishlist and Recommendations</p>
+                <p className="plogin">
+                  Get access to your Orders, Wishlist and Recommendations
+                </p>
                 <div className="log_img"></div>
               </div>
               <div className="col center right-col s7">
@@ -183,7 +188,9 @@ const Login = () => {
           <div className="row">
             <div className="col left-col s5">
               <h4 className="h4sign">Looks like you're new here!</h4>
-              <p className="plogin">Sign up with your mobile number to get started</p>
+              <p className="plogin">
+                Sign up with your mobile number to get started
+              </p>
               <div className="signup_img"></div>
             </div>
             <div className="col center right-col2 s7">
